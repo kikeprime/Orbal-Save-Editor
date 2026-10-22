@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Orbal Save Editor Online</title>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <link rel="icon" type="image/x-icon" href="assets/Estelle (Sora FC Orbment).png">
+    </head>
+    <body>
+        <div style="margin-bottom: 10px">
+            <div style="display: flex; align-items: center; gap: 40px">
+                <div>
+                    <h1 style="font-size: 30px">
+                        Orbal Save Editor Online    <img src="assets/Estelle (Sora FC Orbment).png" height="32">
+                    </h1>
+                </div>
+                <details>
+                    <summary>
+                        Series Selector
+                    </summary>
+                    <a href="https://kikeprime.github.io/KH-Save-Editor" style="display: block">
+                        <img src="assets/FHDR.png" height="32">
+                    </a>
+                    <a href="https://kikeprime.github.io/Orbal-Save-Editor" style="display: block">
+                        <img src="assets/Estelle (Sora FC Orbment).png" height="32">
+                    </a>
+                </details>
+            </div>
+            <div>
+                <h2 for="game">Select Game:</h2>
+                <select id="game">
+                    <optgroup label="Trails in the Sky FC">
+                        <option value="skyfcpsp">Sky FC PSP</option>
+                        <option value="skyfcevo">Sky FC Evolution</option>
+                        <option value="skyfcpc">Sky FC XSEED PC</option>
+                    </optgroup>
+                    <optgroup label="Trails in the Sky SC">
+                        <option value="skyscpsp">Sky SC PSP</option>
+                        <option value="skyscevo">Sky SC Evolution</option>
+                        <option value="skyscpc">Sky SC XSEED PC</option>
+                    </optgroup>
+                    <optgroup label="Trails in the Sky the 3rd">
+                        <option value="skytcpsp">Sky 3rd PSP</option>
+                        <option value="skytcevo">Sky 3rd Evolution</option>
+                        <option value="skytcpc">Sky 3rd XSEED PC</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div style="display: flex">
+                <div>
+                    <h2>Select Main Save File:</h2>
+                    <input type="file" id="mainsavefile">
+                </div>
+                <div>
+                    <h2>Select System Save File:</h2>
+                    <h3 style="color: red">LOAD IT AFTER THE MAIN SAVE!!!</h3>
+                    <input type="file" id="systemsavefile">
+                </div>
+            </div>
+            <div style="display: flex; gap: 20px">
+                <a href="https://github.com/kikeprime/Orbal-Save-Editor"><button>Source Code</button></a>
+            </div>
+            <div>
+                <h2>Download Edited Save File(s):</h2>
+                <button id="save" style="width: 100px">Save</button>
+            </div>
+        </div>
+        <div id="app"></div>
+        <script type="module">
+            import SkyFC from "./skyfc_src/skyfc.js";
+            const app = document.getElementById("app");
+            const game = document.getElementById("game");
+            const account = document.getElementById("account");
+            const mainsavefile = document.getElementById("mainsavefile");
+            mainsavefile.addEventListener("change", async () => {
+                const file = mainsavefile.files[0];
+                switch (game.value) {
+                    case "skyfcpsp": {
+                        window.skyfc = new SkyFC(file, false);
+                        window.skyfcpc = null;
+                        await window.skyfc.loaded;
+                        console.log(String(skyfc));
+                        skyfc.menu();
+                        break;
+                    }
+                    case "skyfcevo": {
+                        window.skyfc = new SkyFC(file, true);
+                        window.skyfcpc = null;
+                        await window.skyfc.loaded;
+                        console.log(String(skyfc));
+                        skyfc.menu();
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            });
+            systemsavefile.addEventListener("change", async () => {
+                const file = systemsavefile.files[0];
+                switch (game.value) {
+                    case "skyfc":
+                    case "skyfcevo": {
+                        await skyfc.load_sys(file);
+                        skyfc.menu();
+                    }
+                    default:
+                        break;
+                }
+            });
+            const save = document.getElementById("save");
+            save.addEventListener("click", async () => {
+                switch (game.value) {
+                    case "skyfc":
+                    case "skyfcevo": {
+                        try {
+                            const picker = await window.showSaveFilePicker({suggestedName: skyfc.file.name});
+                            const writable = await picker.createWritable();
+                            await writable.write(skyfc.save());
+                            await writable.close();
+                        } catch (e) {
+                            if (e.name == "AbortError") return;
+                            return e;
+                        }
+                        if (skyfc.sysfile != null) {
+                            try {
+                                const picker = await window.showSaveFilePicker({suggestedName: skyfc.sysfile.name});
+                                const writable = await picker.createWritable();
+                                await writable.write(skyfc.syssave());
+                                await writable.close();
+                            } catch (e) {
+                                if (e.name == "AbortError") return;
+                                return e;
+                            }
+                        }
+                        break;
+                    }
+                }
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/eruda@3.4.2"></script>
+        <script>
+            eruda.init({
+                defaults: {
+                    displaySize: 70,
+                }
+            });
+            eruda.position({x: 395, y: 80});
+        </script>
+        <!--
+        <script src="https://cdn.sheetjs.com/crc-32-latest/package/crc32.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-md5@0.9.2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/aes-js@3.1.2"></script>
+        -->
+    </body>
+</html>
