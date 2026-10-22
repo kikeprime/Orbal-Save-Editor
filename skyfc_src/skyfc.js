@@ -1,6 +1,6 @@
 import * as dt from "./datatypes.js"
 //import dicts from "./skyfc_dicts.js"
-//import * as tabs from "./tabs/index.js"
+import * as tabs from "./tabs/index.js"
 
 class SkyFCCharacter {
     constructor(name, offset, data) {
@@ -118,6 +118,7 @@ export default class SkyFC {
             this.tita, this.zin,
         ];
         
+        this.mira = new dt.U32(0x11CA0, this.data);
         this.bp = new dt.U32(0x11CA4, this.data);
         this.playtime = new dt.U32(0x11CE4, this.data);
         
@@ -171,11 +172,11 @@ export default class SkyFC {
         app.innerHTML = `${tabs_skyfc_html}<div id="skyfcdiv"></div>`;
         const tabs_skyfc = document.getElementById("tabs_skyfc");
         const skyfcdiv = document.getElementById("skyfcdiv");
-        //tabs.create_general();
+        tabs.create_general();
         tabs_skyfc.addEventListener("change", () => {
             switch (tabs_skyfc.value) {
                 case "General": {
-                    //tabs.create_general();
+                    tabs.create_general();
                     break;
                 }
                 /*
