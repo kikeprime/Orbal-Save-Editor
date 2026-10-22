@@ -30,17 +30,17 @@
                 <h2 for="game">Select Game:</h2>
                 <select id="game">
                     <optgroup label="Trails in the Sky FC">
-                        <option value="skyfcpsp">Sky FC PSP</option>
+                        <option value="skyfc">Sky FC PSP</option>
                         <option value="skyfcevo">Sky FC Evolution</option>
                         <option value="skyfcpc">Sky FC XSEED PC</option>
                     </optgroup>
                     <optgroup label="Trails in the Sky SC">
-                        <option value="skyscpsp">Sky SC PSP</option>
+                        <option value="skysc">Sky SC PSP</option>
                         <option value="skyscevo">Sky SC Evolution</option>
                         <option value="skyscpc">Sky SC XSEED PC</option>
                     </optgroup>
                     <optgroup label="Trails in the Sky the 3rd">
-                        <option value="skytcpsp">Sky 3rd PSP</option>
+                        <option value="skytc">Sky 3rd PSP</option>
                         <option value="skytcevo">Sky 3rd Evolution</option>
                         <option value="skytcpc">Sky 3rd XSEED PC</option>
                     </optgroup>
@@ -70,12 +70,11 @@
             import SkyFC from "./skyfc_src/skyfc.js";
             const app = document.getElementById("app");
             const game = document.getElementById("game");
-            const account = document.getElementById("account");
             const mainsavefile = document.getElementById("mainsavefile");
             mainsavefile.addEventListener("change", async () => {
                 const file = mainsavefile.files[0];
                 switch (game.value) {
-                    case "skyfcpsp": {
+                    case "skyfc": {
                         window.skyfc = new SkyFC(file, false);
                         window.skyfcpc = null;
                         await window.skyfc.loaded;
