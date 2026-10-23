@@ -181,11 +181,11 @@ export default class SkyFC {
                     tabs.create_general();
                     break;
                 }
-                /*
                 case "Characters": {
                     tabs.create_characters();
                     break;
                 }
+                /*
                 case "Inventory": {
                     tabs.create_inventory();
                     break;
