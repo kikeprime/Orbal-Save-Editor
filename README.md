@@ -56,6 +56,7 @@ For now, `skyfc_src/skyfc.js` double as save file documentation for the respecti
 - There are placeholder tabs that won't show anything. This isn't a bug, they just aren't implemented yet.
 
 # Special thanks
+- unknowndatax: Ys VIII Save Editor for the Yamaneko Engine checksum algorithm
 - This project wouldn't have come to light if I wasn't working on KHSE and KHSE Online so I include the KH thanks here
 - Xeeynamo: [Kingdom Save Editor](https://github.com/Xeeynamo/KingdomSaveEditor) the main inspiration of the KHSE project
 - [Game Tools Collection](https://github.com/RyudoSynbios/game-tools-collection/blob/master/src/lib/templates/kingdom-hearts-ps2) for an [online PS2 KH1 save editor](https://game-tools-collection.com/kingdom-hearts-ps2/save-editor) that provided lots of used info

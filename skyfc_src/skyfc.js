@@ -1,6 +1,7 @@
 import * as dt from "./datatypes.js"
 //import dicts from "./skyfc_dicts.js"
 import * as tabs from "./tabs/index.js"
+import yamaneko_checksum from "./yamaneko_checksum.js"
 
 class SkyFCCharacter {
     constructor(name, offset, data) {
@@ -50,8 +51,7 @@ class SkyFCCharacter {
 }
 
 class SkyFCMessageLog {
-    constructor(idx, offset, data, buffer) {
-        this.idx = idx;
+    constructor(offset, data, buffer) {
         this.offset = offset;
         this.data = data;
         this.buffer = buffer;
@@ -82,8 +82,9 @@ class SkyFCMessageLog {
 
 export default class SkyFC {
     constructor(file, evo) {
-        this.file = file
+        this.file = file;
         this.evo = evo;
+        this.sysfile = null;
         //dicts(this);
         this.loaded = this._load();
     }
@@ -96,7 +97,7 @@ export default class SkyFC {
     }
     
     async load_sys(file) {
-        this.sysfile = file
+        this.sysfile = file;
         const buffer = await this.sysfile.arrayBuffer();
         this.sysbuffer = new Uint8Array(buffer);
         this.sysdata = new DataView(buffer);
@@ -140,12 +141,13 @@ export default class SkyFC {
             this.surprise_attacks = new dt.U32(0x17284, this.data);
             this.message_log = [];
             for (let i = 0; i < 1024; i++) {
-                this.message_log.push(new SkyFCMessageLog(i, 0x17288+i*0x28, this.data, this.buffer));
+                this.message_log.push(new SkyFCMessageLog(0x17288+i*0x28, this.data, this.buffer));
             }
         }
     }
 
     save() {
+        yamaneko_checksum(this.data);
         return new Blob([this.buffer], { type: "application/octet-stream" });
     }
     
@@ -232,7 +234,7 @@ export default class SkyFC {
     }
     
     toString() {
-//    Difficulty: ${["Easy", "Normal", "Hard", "Nightmare"][this.difficulty.value]},
+//    Difficulty: ${["Normal", "Hard", "Nightmare", "Easy"][this.difficulty.value]},
         return `SkyFC(
     Evolution: ${this.evo},
     Playtime: ${this.get_playtime()},

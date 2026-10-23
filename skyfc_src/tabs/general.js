@@ -25,7 +25,6 @@ export function create_general() {
 
 function create_playtime() {
     const playtime = window.skyfc.get_playtime();
-    console.log(`Playtime: ${playtime}`);
     return `
     <h3>Playtime:</h3>
     <div id="playtime" style="display: flex; gap: 20px">
