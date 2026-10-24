@@ -166,7 +166,8 @@ export default class SkyFC {
                 <option value="Inventory">Inventory</option>
                 <option value="Bracer Notebook">Bracer Notebook</option>
                 <option value="Monster Guide">Monster Guide</option>
-                <option value="Recipe Book">Recipe Book</option>
+                ${this.evo ? `<option value="Recipe Book">Recipe Book</option>` : ""}
+                ${this.evo ? `<option value="Message Log">Message Log</option>` : ""}
                 <option value="Config">Config</option>
                 <option value="Misc">Misc</option>
             </select>
@@ -190,10 +191,12 @@ export default class SkyFC {
                     tabs.create_inventory();
                     break;
                 }
+                */
                 case "Bracer Notebook": {
                     tabs.create_notebook();
                     break;
                 }
+                /*
                 case "Monster Guide": {
                     tabs.create_bestiary();
                     break;
@@ -202,6 +205,12 @@ export default class SkyFC {
                     tabs.create_recipe_book();
                     break;
                 }
+                */
+                case "Message Log": {
+                    tabs.create_log();
+                    break;
+                }
+                /*
                 case "Config": {
                     tabs.create_config();
                     break;

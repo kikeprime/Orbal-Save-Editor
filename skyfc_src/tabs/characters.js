@@ -69,7 +69,7 @@ function create_stats(id) {
             type="number"
             id="level"
             min=1
-            max=99
+            max=50
             step=1
             value=${c.level.value}
         >
