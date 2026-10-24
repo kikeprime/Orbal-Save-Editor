@@ -96,16 +96,16 @@ export function create_bestiary() {
             value=${window.skyfc.preemptive_attacks.value}
         >
     </div>`;
-    const surpise_attacks = !window.skyfc.evo ? "" : `
+    const surprise_attacks = !window.skyfc.evo ? "" : `
     <div>
         <h3>Surprise Attacks:</h3>
         <input
             type="number"
-            id="surpise_attacks"
+            id="surprise_attacks"
             min=0
             max=999999
             step=1
-            value=${window.skyfc.surpise_attacks.value}
+            value=${window.skyfc.surprise_attacks.value}
         >
     </div>`;
     const retries = !window.skyfc.evo ? "" : `
@@ -130,7 +130,7 @@ export function create_bestiary() {
         ${enemies_defeated}
         ${sbreaks}
         ${preemptive_attacks}
-        ${surpise_attacks}
+        ${surprise_attacks}
         ${retries}
     </div>`;
     bestiary_callbacks();
@@ -186,11 +186,11 @@ function bestiary_callbacks() {
                 window.skyfc.preemptive_attacks.value = preemptive_attacks.value;
             preemptive_attacks.value = window.skyfc.preemptive_attacks.value;
         });
-        const surpise_attacks = document.getElementById("surpise_attacks");
-        surpise_attacks.addEventListener("change", () => {
-            if (surpise_attacks.validity.valid)
-                window.skyfc.surpise_attacks.value = surpise_attacks.value;
-            surpise_attacks.value = window.skyfc.surpise_attacks.value;
+        const surprise_attacks = document.getElementById("surprise_attacks");
+        surprise_attacks.addEventListener("change", () => {
+            if (surprise_attacks.validity.valid)
+                window.skyfc.surprise_attacks.value = surprise_attacks.value;
+            surprise_attacks.value = window.skyfc.surprise_attacks.value;
         });
         const retries = document.getElementById("retries");
         retries.addEventListener("change", () => {
