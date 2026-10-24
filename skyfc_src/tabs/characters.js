@@ -292,7 +292,7 @@ function create_stats(id) {
 }
 
 function stats_callbacks(id) {
-    const c = window.kh1.characters[id];
+    const c = window.skyfc.characters[id];
     const exp = document.getElementById("exp");
     exp.addEventListener("change", () => {
         if (exp.validity.valid)
