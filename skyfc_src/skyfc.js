@@ -1,5 +1,5 @@
 import * as dt from "./datatypes.js"
-//import dicts from "./skyfc_dicts.js"
+import dicts from "./skyfc_dicts.js"
 import * as tabs from "./tabs/index.js"
 import yamaneko_checksum from "./yamaneko_checksum.js"
 
@@ -8,6 +8,8 @@ class SkyFCCharacter {
         this.name = name;
         this.offset = offset;
         this.data = data;
+        this.idx = (offset - 0xE0) / 0x34;
+        // Stats
         this.level = new dt.U16(offset+0x00, data);
         this.hp = new dt.U16(offset+0x02, data);
         this.maxhp = new dt.U16(offset+0x04, data);
@@ -23,8 +25,14 @@ class SkyFCCharacter {
         this.agl = new dt.U16(offset+0x1A, data);
         this.mov = new dt.U16(offset+0x1C, data);
         this.spd = new dt.U16(offset+0x1E, data);
-        this.maxcp = new dt.U16(offset+0x20, data); // Seems to be 200 for everybody which makes Max CP likely
+        this.maxcp = new dt.U16(offset+0x20, data); // Seems to be 200 for everybody which makes Max CP likely.
         this.rng = new dt.U16(offset+0x26, data);
+        // Equipment
+        this.weapon = new dt.U16(0x0280 + this.idx * 0x0A + 0x00, data);
+        this.armor = new dt.U16(0x0280 + this.idx * 0x0A + 0x02, data);
+        this.boots = new dt.U16(0x0280 + this.idx * 0x0A + 0x04, data);
+        this.accessory1 = new dt.U16(0x0280 + this.idx * 0x0A + 0x06, data);
+        this.accessory2 = new dt.U16(0x0280 + this.idx * 0x0A + 0x08, data);
     }
     
     toString() {
@@ -85,7 +93,7 @@ export default class SkyFC {
         this.file = file;
         this.evo = evo;
         this.sysfile = null;
-        //dicts(this);
+        dicts(this);
         this.loaded = this._load();
     }
     

@@ -8,7 +8,7 @@ An online save editor for the Trails series also known as Kiseki series in the w
 Currently focusing on the Trails in the Sky / Sora no Kiseki Trilogy because I just got into the series.
 
 I'm playing Sky FC Evo but after inspecting PC and PSP Sky FC save files it turned out PC is radically different from PSP/Evo and Evo is just an extension of the PSP save file meaning I can support both.
-Unlike my Kingdom Hearts Save Editor project here I have to discover every single field myself at least for PSP and Evolution.
+Unlike my Kingdom Hearts Save Editor project here I started to discover every single field myself for Evolution which seemed to apply to PSP as well. Fortunately the PSP dictionary data is available in the RA Code Notes. The memory addresses though don't seem to line up with file offsets which is sad.
 
 # Features
 ## Sky FC PSP & Evo features
@@ -25,6 +25,11 @@ Unlike my Kingdom Hearts Save Editor project here I have to discover every singl
         - SPD & MOV
         - DEF & AGL
         - RNG
+    - Equipment:
+        - Weapon
+        - Armor
+        - Boots
+        - Accessories
 - Bracer Notebook:
     - Bracer Points (BP)
 - Monster Guide:

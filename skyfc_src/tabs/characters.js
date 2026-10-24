@@ -33,12 +33,10 @@ function create_character(id, tab) {
             create_stats(id);
             break;
         }
-        /*
         case "Equipment": {
             create_equipment(id);
             break;
         }
-        */
         default: {
             const skyfcchardiv = document.getElementById("skyfcchardiv");
             skyfcchardiv.innerHTML = "";
@@ -382,5 +380,95 @@ function stats_callbacks(id) {
         if (rng.validity.valid)
             c.rgn.value = rng.value;
         rng.value = c.rng.value;
+    });
+}
+
+function create_equipment(id) {
+    const skyfcchardiv = document.getElementById("skyfcchardiv");
+    const c = window.skyfc.characters[id];
+    const weapon_options = window.skyfc.weapon_list[c.name]
+        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+        .join("");
+    const armor_options = window.skyfc.armor_list
+        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+        .join("");
+    const boots_options = window.skyfc.boots_list
+        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+        .join("");
+    const accessory_options = window.skyfc.accessory_list
+        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+        .join("");
+    const weapon = `
+    <div>
+        <h3>Weapon:</h3>
+        <select id="weapon">
+            ${weapon_options}
+        </select>
+    </div>`;
+    const armor = `
+    <div>
+        <h3>Armor:</h3>
+        <select id="armor">
+            ${armor_options}
+        </select>
+    </div>`;
+    const boots = `
+    <div>
+        <h3>Boots:</h3>
+        <select id="boots">
+            ${boots_options}
+        </select>
+    </div>`;
+    const accessory1 = `
+    <div>
+        <h3>Accessory 1:</h3>
+        <select id="accessory1">
+            ${accessory_options}
+        </select>
+    </div>`;
+    const accessory2 = `
+    <div>
+        <h3>Accessory 2:</h3>
+        <select id="accessory2">
+            ${accessory_options}
+        </select>
+    </div>`;
+    skyfcchardiv.innerHTML = `
+    <div>
+        ${weapon}
+        ${armor}
+        ${boots}
+        ${accessory1}
+        ${accessory2}
+    </div>`;
+    equipment_callbacks(id);
+}
+
+function equipment_callbacks(id) {
+    const c = window.skyfc.characters[id];
+    const weapon = document.getElementById("weapon");
+    weapon.value = c.weapon.value;
+    weapon.addEventListener("change", () => {
+        c.weapon.value = weapon.value;
+    });
+    const armor = document.getElementById("armor");
+    armor.value = c.armor.value;
+    armor.addEventListener("change", () => {
+        c.armor.value = armor.value;
+    });
+    const boots = document.getElementById("boots");
+    boots.value = c.boots.value;
+    boots.addEventListener("change", () => {
+        c.boots.value = boots.value;
+    });
+    const accessory1 = document.getElementById("accessory1");
+    accessory1.value = c.accessory1.value;
+    accessory1.addEventListener("change", () => {
+        c.accessory1.value = accessory1.value;
+    });
+    const accessory2 = document.getElementById("accessory2");
+    accessory2.value = c.accessory2.value;
+    accessory2.addEventListener("change", () => {
+        c.accessory2.value = accessory2.value;
     });
 }
