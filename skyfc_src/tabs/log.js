@@ -59,7 +59,7 @@ function create_entry(idx) {
             <input
                 type="text"
                 name=${idx}
-                value=${entry.speaker}
+                value="${entry.speaker}"
             >
         </div>
     </div>`;

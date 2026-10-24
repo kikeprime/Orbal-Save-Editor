@@ -196,7 +196,6 @@ export default class SkyFC {
                     tabs.create_notebook();
                     break;
                 }
-                /*
                 case "Monster Guide": {
                     tabs.create_bestiary();
                     break;
@@ -205,7 +204,6 @@ export default class SkyFC {
                     tabs.create_recipe_book();
                     break;
                 }
-                */
                 case "Message Log": {
                     tabs.create_log();
                     break;
