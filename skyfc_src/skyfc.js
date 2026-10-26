@@ -1,92 +1,8 @@
 import * as dt from "./datatypes.js"
 import dicts from "./skyfc_dicts.js"
+import * as h from "./skyfc_helper.js"
 import * as tabs from "./tabs/index.js"
 import yamaneko_checksum from "./yamaneko_checksum.js"
-
-class SkyFCCharacter {
-    constructor(name, offset, data) {
-        this.name = name;
-        this.offset = offset;
-        this.data = data;
-        this.idx = (offset - 0xE0) / 0x34;
-        // Stats
-        this.level = new dt.U16(offset+0x00, data);
-        this.hp = new dt.U16(offset+0x02, data);
-        this.maxhp = new dt.U16(offset+0x04, data);
-        this.ep = new dt.U16(offset+0x06, data);
-        this.maxep = new dt.U16(offset+0x08, data);
-        this.cp = new dt.U16(offset+0x0A, data);
-        this.exp = new dt.U32(offset+0x0C, data);
-        this.str = new dt.U16(offset+0x10, data);
-        this.def = new dt.U16(offset+0x12, data);
-        this.ats = new dt.U16(offset+0x14, data);
-        this.adf = new dt.U16(offset+0x16, data);
-        this.dex = new dt.U16(offset+0x18, data);
-        this.agl = new dt.U16(offset+0x1A, data);
-        this.mov = new dt.U16(offset+0x1C, data);
-        this.spd = new dt.U16(offset+0x1E, data);
-        this.maxcp = new dt.U16(offset+0x20, data); // Seems to be 200 for everybody which makes Max CP likely.
-        this.rng = new dt.U16(offset+0x26, data);
-        // Equipment
-        this.weapon = new dt.U16(0x0280 + this.idx * 0x0A + 0x00, data);
-        this.armor = new dt.U16(0x0280 + this.idx * 0x0A + 0x02, data);
-        this.boots = new dt.U16(0x0280 + this.idx * 0x0A + 0x04, data);
-        this.accessory1 = new dt.U16(0x0280 + this.idx * 0x0A + 0x06, data);
-        this.accessory2 = new dt.U16(0x0280 + this.idx * 0x0A + 0x08, data);
-    }
-    
-    toString() {
-        return `${this.name}(
-    Level: ${this.level.value}
-    HP: ${this.hp.value}
-    Max HP: ${this.maxhp.value}
-    EP: ${this.ep.value}
-    Max EP: ${this.maxep.value}
-    CP: ${this.cp.value}
-    Max CP: ${this.maxcp.value}
-    EXP: ${this.exp.value}
-    STR: ${this.str.value}
-    DEF: ${this.def.value}
-    ATS: ${this.ats.value}
-    ADF: ${this.adf.value}
-    SPD: ${this.spd.value}
-    MOV: ${this.mov.value}
-    DEX: ${this.dex.value}
-    AGL: ${this.agl.value}
-    RNG: ${this.rng.value}
-)`;
-    }
-}
-
-class SkyFCMessageLog {
-    constructor(offset, data, buffer) {
-        this.offset = offset;
-        this.data = data;
-        this.buffer = buffer;
-        this.id1 = new dt.U32(offset+0x00, data);
-        this.id2 = new dt.U32(offset+0x04, data);
-    }
-    
-    get speaker() {
-        const buf = this.buffer.subarray(this.offset+0x08, this.offset+0x28);
-        const end = buf.indexOf(0);
-        return new TextDecoder().decode(buf.subarray(0, end != -1 ? end : 0x28));
-    }
-    
-    set speaker(value) {
-        const s = new TextEncoder().encode(value);
-        const l = Math.min(s.length, 0x1F);
-        this.buffer.set(s.subarray(0, l), this.offset+0x08);
-        this.buffer[this.offset+0x08+l] = 0;
-    }
-    
-    toString() {
-        return `${this.speaker}(
-    ID 1: ${this.id1.value}
-    ID 2: ${this.id2.value}
-)`;
-    }
-}
 
 export default class SkyFC {
     constructor(file, evo) {
@@ -112,23 +28,26 @@ export default class SkyFC {
     }
     
     parse_data() {
-        this.estelle = new SkyFCCharacter("Estelle Bright", 0xE0, this.data);
-        this.joshua = new SkyFCCharacter("Joshua Bright", 0xE0+0x34, this.data);
-        this.scherazard = new SkyFCCharacter("Scherazard Harvey", 0xE0+2*0x34, this.data);
-        this.olivier = new SkyFCCharacter("Olivier Lenheim", 0xE0+3*0x34, this.data);
-        this.kloe = new SkyFCCharacter("Kloe Rinz", 0xE0+4*0x34, this.data);
-        this.agate = new SkyFCCharacter("Agate Crossner", 0xE0+5*0x34, this.data);
-        this.tita = new SkyFCCharacter("Tita Russell", 0xE0+6*0x34, this.data);
-        this.zin = new SkyFCCharacter("Zin Vathek", 0xE0+7*0x34, this.data);
+        this.estelle = new h.SkyFCCharacter("Estelle Bright", 0xE0, this.data);
+        this.joshua = new h.SkyFCCharacter("Joshua Bright", 0xE0+0x34, this.data);
+        this.scherazard = new h.SkyFCCharacter("Scherazard Harvey", 0xE0+2*0x34, this.data);
+        this.olivier = new h.SkyFCCharacter("Olivier Lenheim", 0xE0+3*0x34, this.data);
+        this.kloe = new h.SkyFCCharacter("Kloe Rinz", 0xE0+4*0x34, this.data);
+        this.agate = new h.SkyFCCharacter("Agate Crossner", 0xE0+5*0x34, this.data);
+        this.tita = new h.SkyFCCharacter("Tita Russell", 0xE0+6*0x34, this.data);
+        this.zin = new h.SkyFCCharacter("Zin Vathek", 0xE0+7*0x34, this.data);
         this.characters = [
             this.estelle, this.joshua,
             this.scherazard, this.olivier,
             this.kloe, this.agate,
             this.tita, this.zin,
         ];
+        // RA Code Notes documents 230 slots though for me until the next non-zero data it has 1024 slots of space.
+        this.inventory = dt.Array(dt.U32, 230, 0x0F10, this.data);
         
         this.mira = new dt.U32(0x11CA0, this.data);
         this.bp = new dt.U32(0x11CA4, this.data);
+        this.sepith = dt.Array(dt.U32, 7, 0x11CA8, this.data);
         this.playtime = new dt.U32(0x11CE4, this.data);
         
         this.battles_fought = new dt.U16(0x11F04, this.data);
@@ -149,7 +68,7 @@ export default class SkyFC {
             this.surprise_attacks = new dt.U32(0x17284, this.data);
             this.message_log = [];
             for (let i = 0; i < 1024; i++) {
-                this.message_log.push(new SkyFCMessageLog(0x17288+i*0x28, this.data, this.buffer));
+                this.message_log.push(new h.SkyFCMessageLog(0x17288+i*0x28, this.data, this.buffer));
             }
         }
     }
@@ -194,12 +113,10 @@ export default class SkyFC {
                     tabs.create_characters();
                     break;
                 }
-                /*
                 case "Inventory": {
                     tabs.create_inventory();
                     break;
                 }
-                */
                 case "Bracer Notebook": {
                     tabs.create_notebook();
                     break;

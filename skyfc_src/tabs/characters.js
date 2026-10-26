@@ -37,6 +37,10 @@ function create_character(id, tab) {
             create_equipment(id);
             break;
         }
+        case "Orbment": {
+            create_orbment(id);
+            break;
+        }
         default: {
             const skyfcchardiv = document.getElementById("skyfcchardiv");
             skyfcchardiv.innerHTML = "";
@@ -470,5 +474,51 @@ function equipment_callbacks(id) {
     accessory2.value = c.accessory2.value;
     accessory2.addEventListener("change", () => {
         c.accessory2.value = accessory2.value;
+    });
+}
+
+function create_orbment(id) {
+    const skyfcchardiv = document.getElementById("skyfcchardiv");
+    const c = window.skyfc.characters[id];
+    const quartz_options = window.skyfc.quartz_list
+        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+        .join("");
+    let orbment = "";
+    for (let i = 0; i < 6; i++) {
+        const checked = c.orbment[i] & (1 << 16) ? "checked" : "";
+        orbment += `
+        <div style="display: flex; align-items: center; gap: 10px">
+            <input class="skyfc-orbment" type="checkbox" value=${i} ${checked}>
+            <select name=${i}>
+                ${quartz_options}
+            </select>
+        </div>`
+    }
+    skyfcchardiv.innerHTML = `
+    <div id="orbment">
+        ${orbment}
+    </div>`;
+    orbment_callbacks(id);
+}
+
+function orbment_callbacks(id) {
+    const c = window.skyfc.characters[id];
+    const orbment = document.getElementById("orbment");
+    orbment.querySelectorAll("select").forEach(select => {
+        select.value = c.orbment[select.name] & ~(1 << 16);
+    });
+    orbment.addEventListener("change", (e) => {
+        if (e.target.type != "checkbox") {
+            const checked = c.orbment[e.target.name] & (1 << 16);
+            c.orbment[e.target.name] = e.target.value;
+            if (checked)
+                c.orbment[e.target.name] |= (1 << 16);
+        }
+        else {
+            if (e.target.checked)
+                c.orbment[e.target.value] |= (1 << 16);
+            else
+                c.orbment[e.target.value] &= ~(1 << 16);
+        }
     });
 }
