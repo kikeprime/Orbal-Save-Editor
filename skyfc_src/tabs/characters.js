@@ -598,5 +598,8 @@ function crafts_callbacks(id) {
     const scrafts = document.getElementById("scrafts");
     scrafts.querySelectorAll("select").forEach(select => {
         select.value = c.scrafts[select.name];
+        select.addEventListener("change", () => {
+            c.scrafts[select.name] = select.value;
+        });
     });
 }
