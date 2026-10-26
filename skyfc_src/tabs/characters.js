@@ -13,6 +13,7 @@ export function create_characters() {
                 <option value="Stats">Stats</option>
                 <option value="Equipment">Equipment</option>
                 <option value="Orbment">Orbment</option>
+                <option value="Crafts">Crafts</option>
             </select>
         </div>
         <div id="skyfcchardiv"></div>
@@ -39,6 +40,10 @@ function create_character(id, tab) {
         }
         case "Orbment": {
             create_orbment(id);
+            break;
+        }
+        case "Crafts": {
+            create_crafts(id);
             break;
         }
         default: {
@@ -520,5 +525,78 @@ function orbment_callbacks(id) {
             else
                 c.orbment[e.target.value] &= ~(1 << 16);
         }
+    });
+}
+
+function create_crafts(id) {
+    const skyfcchardiv = document.getElementById("skyfcchardiv");
+    const c = window.skyfc.characters[id];
+    const craft_options = window.skyfc.craft_list
+        .map(label => `<option value=${window.skyfc.craft_dict[label]}>${label}</option>`)
+        .join("");
+    let crafts = "";
+    for (let i = 0; i < c.crafts.length; i++) {
+        crafts += `
+        <div style="display: flex; align-items: center; gap: 20px">
+            <select name=${i}>${craft_options}</select>
+            <input
+                type="checkbox"
+                name=${i}
+                ${c.crafts[i].state.value ? "checked" : ""}
+            >
+            <label style="display: flex; align-items: center; gap: 10px">
+                Price:
+                <input
+                    type="number"
+                    name=${i}
+                    value=${c.crafts[i].price.value}
+                    min=0
+                    max=255
+                    step=1
+                >
+            </label>
+        </div>`;
+    }
+    const scrafts = c.scrafts
+        .map((value, i) => `<select name=${i}>${craft_options}</select>`)
+        .join("");
+    skyfcchardiv.innerHTML = `
+    <div>
+        <h3>Crafts:</h3>
+        <div id="crafts">
+            ${crafts}
+        </div>
+        <h3>S-Crafts:</h3>
+        <div id="scrafts">
+            ${scrafts}
+        </div>
+    </div>`;
+    crafts_callbacks(id);
+}
+
+function crafts_callbacks(id) {
+    const c = window.skyfc.characters[id];
+    const crafts = document.getElementById("crafts");
+    crafts.querySelectorAll("select").forEach(select => {
+        select.value = c.crafts[select.name].craft.value;
+    });
+    crafts.querySelectorAll("input[type=checkbox]").forEach(input => {
+        input.addEventListener("change", () => {
+            if (input.checked)
+                c.crafts[input.name].state.value = 1;
+            else
+                c.crafts[input.name].state.value = 0;
+        });
+    });
+    crafts.querySelectorAll("input[type=number]").forEach(input => {
+        input.addEventListener("change", () => {
+            if (input.validity.valid)
+                c.crafts[input.name].price.value = input.value;
+            input.value = c.crafts[input.name].price.value;
+        });
+    });
+    const scrafts = document.getElementById("scrafts");
+    scrafts.querySelectorAll("select").forEach(select => {
+        select.value = c.scrafts[select.name];
     });
 }

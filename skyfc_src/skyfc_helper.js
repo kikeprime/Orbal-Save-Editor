@@ -34,6 +34,15 @@ export class SkyFCCharacter {
         this.arts = dt.Array(dt.U32, 80, 0x02D0 + this.idx * 0x0140, data);
         // Again 2 shorts but the 2nd's high byte has value here so needs more investigation.
         this.crafts = dt.Array(dt.U32, 10, 0x0CD0 + this.idx * 0x28, data);
+        this.crafts = [];
+        for (let i = 0; i < 10; i++) {
+            const offset = 0x0CD0 + this.idx * 0x28 + i * 0x04;
+            this.crafts.push({
+                "craft": new dt.U16(offset+0x00, data),
+                "state": new dt.U8(offset+0x02, data),
+                "price": new dt.U8(offset+0x03, data),
+            });
+        }
         this.scrafts = dt.Array(dt.U16, 4, 0x0E10 + this.idx * 0x08, data);
         // 2 shorts, quartz ID and slot state
         this.orbment = dt.Array(dt.U32, 6, 0x0E50 + this.idx * 0x18, data);

@@ -30,6 +30,15 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
         - Armor
         - Boots
         - Accessories
+    - Orbment:
+        - Slot Unlock State
+        - Equipped Quartzes
+    - Crafts:
+        - Crafts: Craft, Unlocked State, Price
+        - S-Crafts
+- Inventory:
+    - Sepith
+    - Inventory Slots
 - Bracer Notebook:
     - Bracer Points (BP)
 - Monster Guide:
