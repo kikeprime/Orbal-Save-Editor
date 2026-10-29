@@ -55,6 +55,8 @@ export default class SkyFC {
         this.battles_won = new dt.U16(0x11F08, this.data);
         this.battles_retreated = new dt.U16(0x11F0C, this.data);
         
+        this.difficulty = new dt.U8(0x16DE6, this.data);
+        
         // Evolution stuff
         // Starts at 0x16FEC
         if (this.evo) {
@@ -166,10 +168,10 @@ export default class SkyFC {
     }
     
     toString() {
-//    Difficulty: ${["Normal", "Hard", "Nightmare", "Easy"][this.difficulty.value]},
         return `SkyFC(
     Evolution: ${this.evo},
     Playtime: ${this.get_playtime()},
+    Difficulty: ${["Normal", "Hard", "Nightmare", "Easy"][this.difficulty.value]},
 ${String(this.estelle)},
 ${String(this.joshua)},
 )`;

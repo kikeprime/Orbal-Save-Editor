@@ -14,9 +14,18 @@ export function create_general() {
             value=${window.skyfc.mira.value}
         >
     </div>`;
+    const difficulty = `
+    <h3>Difficulty:</h3>
+    <select id="difficulty">
+        <option value=3>Easy</option>
+        <option value=0>Normal</option>
+        <option value=1>Hard</option>
+        <option value=2>Nightmare</option>
+    </select>`;
     skyfcdiv.innerHTML = `
     <div>
         ${playtime}
+        ${difficulty}
         ${party}
         ${mira}
     </div>`;
@@ -85,6 +94,11 @@ function playtime_callbacks() {
 
 function general_callbacks() {
     playtime_callbacks();
+    const difficulty = document.getElementById("difficulty");
+    difficulty.value = window.skyfc.difficulty.value;
+    difficulty.addEventListener("change", () => {
+        window.skyfc.difficulty.value = difficulty.value;
+    });
     const mira = document.getElementById("mira");
     mira.addEventListener("change", () => {
         if (mira.validity.valid)

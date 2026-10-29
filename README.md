@@ -14,6 +14,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
 ## Sky FC PSP & Evo features
 - Support for both vanilla PSP and Evolution save files.
 - Playtime: Hours, minutes, seconds
+- Difficulty
 - Characters:
     - Stats:
         - Level & EXP
@@ -23,7 +24,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
         - STR & DEF
         - ATS & ADF
         - SPD & MOV
-        - DEF & AGL
+        - DEX & AGL
         - RNG
     - Equipment:
         - Weapon
@@ -34,7 +35,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
         - Slot Unlock State
         - Equipped Quartzes
     - Crafts:
-        - Crafts: Craft, Unlocked State, Price
+        - Crafts: Craft, Unlock State, Price
         - S-Crafts
 - Inventory:
     - Sepith
