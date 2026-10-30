@@ -45,6 +45,7 @@ export default class SkyFC {
         // RA Code Notes documents 230 slots though for me until the next non-zero data it has 1024 slots of space.
         this.inventory = dt.Array(dt.U32, 230, 0x0F10, this.data);
         
+        this.party = dt.Array(dt.U32, 8, 0x11C78, this.data);
         this.mira = new dt.U32(0x11CA0, this.data);
         this.bp = new dt.U32(0x11CA4, this.data);
         this.sepith = dt.Array(dt.U32, 7, 0x11CA8, this.data);

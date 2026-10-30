@@ -1,7 +1,35 @@
 export function create_general() {
     const skyfcdiv = document.getElementById("skyfcdiv");
     const playtime = create_playtime();
-    const party = "";
+    const difficulty = `
+    <h3>Difficulty:</h3>
+    <select id="difficulty">
+        <option value=3>Easy</option>
+        <option value=0>Normal</option>
+        <option value=1>Hard</option>
+        <option value=2>Nightmare</option>
+    </select>`;
+    const party_options = Object.entries(window.skyfc.character_dict)
+        .map(([label, value]) => `\n\t<option value=${value}>${label}</option>`)
+        .join("");
+    const party = `
+    <div>
+        <h3>Party:</h3>
+        <div id="party" style="display: flex">
+            <select name=0>
+                ${party_options}
+            </select>
+            <select name=1>
+                ${party_options}
+            </select>
+            <select name=2>
+                ${party_options}
+            </select>
+            <select name=3>
+                ${party_options}
+            </select>
+        </div>
+    </div>`;
     const mira = `
     <div>
         <h3>Mira:</h3>
@@ -14,14 +42,6 @@ export function create_general() {
             value=${window.skyfc.mira.value}
         >
     </div>`;
-    const difficulty = `
-    <h3>Difficulty:</h3>
-    <select id="difficulty">
-        <option value=3>Easy</option>
-        <option value=0>Normal</option>
-        <option value=1>Hard</option>
-        <option value=2>Nightmare</option>
-    </select>`;
     skyfcdiv.innerHTML = `
     <div>
         ${playtime}
@@ -98,6 +118,13 @@ function general_callbacks() {
     difficulty.value = window.skyfc.difficulty.value;
     difficulty.addEventListener("change", () => {
         window.skyfc.difficulty.value = difficulty.value;
+    });
+    const party = document.getElementById("party");
+    Array.from(party.querySelectorAll("select")).forEach(select => {
+        select.value = window.skyfc.party[select.name];
+        select.addEventListener("change", () => {
+            window.skyfc.party[select.name] = select.value;
+        });
     });
     const mira = document.getElementById("mira");
     mira.addEventListener("change", () => {

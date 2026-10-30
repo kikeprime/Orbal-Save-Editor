@@ -15,6 +15,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
 - Support for both vanilla PSP and Evolution save files.
 - Playtime: Hours, minutes, seconds
 - Difficulty
+- Party
 - Characters:
     - Stats:
         - Level & EXP
