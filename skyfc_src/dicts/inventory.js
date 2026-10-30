@@ -22,7 +22,7 @@ export function inventory_dicts(obj) {
         "Schneiders": 0x0024,
         "Gurkha Knives": 0x0027,
         "Demi-Handers": 0x0028,
-        "Erbe-Blades": 0x0029,
+        "Erbe Blades": 0x0029,
         "Skull Daggers": 0x002D,
         "Paring Knives": 0x002F,
         "Twin Plovers": 0x0030,
@@ -103,6 +103,7 @@ export function inventory_dicts(obj) {
         "Silver Earring": 0x012D,
         "Lighter": 0x012E,
         "Black Bangle": 0x0130,
+        "Glam Choker": 0x0131,
         "White Bracelet": 0x0132,
         "Pearl Earring": 0x0133,
         "Lily Necklace": 0x0134,
@@ -252,6 +253,7 @@ export function inventory_dicts(obj) {
         "Speed Breaker": 0x0298,
         "Voice Breaker": 0x0299,
         "Qilin": 0x029F,
+        "Youkai Gem": 0x02A0,
         "Impede 1": 0x02C1,
         "Impede 2": 0x02C2,
         "Impede 3": 0x02C3,
@@ -267,8 +269,8 @@ export function inventory_dicts(obj) {
         "Cloak": 0x02D3,
         "Heal": 0x02D4,
         "Septium Vein": 0x02D5,
+        "Intimidation": 0x02D6,
         "Ingenuity": 0x02D7,
-        //"Cast 3": 0x02D8,
         "Dragon Vision": 0x02D9,
         "Hare": 0x02DA,
         "Detection": 0x02DB,
@@ -413,6 +415,8 @@ export function inventory_dicts(obj) {
         "Rainbow Trout": 0x03AE,
         "Tiger Rockfish": 0x03AF,
         "Salmon": 0x03B0,
+        // Weapon
+        "Practice Weapon": 0x03E8,
     };
     obj.art_dict = {
         "Stone Hammer": 0x000A,
@@ -508,6 +512,7 @@ export function inventory_dicts(obj) {
     obj.weapon_list = {
         "Estelle Bright": [
             "Empty",
+            "Practice Weapon",
             "Birch Staff",
             "Pile Rod",
             "Laundry Pole",
@@ -522,6 +527,7 @@ export function inventory_dicts(obj) {
         ],
         "Joshua Bright": [
             "Empty",
+            "Practice Weapon",
             "Twin Dirks",
             "Kunai",
             "Paring Knives",
@@ -532,11 +538,12 @@ export function inventory_dicts(obj) {
             "Gurkha Knives",
             "Demi-Handers",
             "Schneiders",
-            "Erbe-Blades",
+            "Erbe Blades",
             "Twin Plovers",
         ],
         "Scherazard Harvey": [
             "Empty",
+            "Practice Weapon",
             "Viper",
             "Blitz",
             "Scorpion",
@@ -545,6 +552,7 @@ export function inventory_dicts(obj) {
         ],
         "Olivier Lenheim": [
             "Empty",
+            "Practice Weapon",
             "Needler",
             "Bear Assault",
             "Zero Shot (X)",
@@ -555,6 +563,7 @@ export function inventory_dicts(obj) {
         ],
         "Kloe Rinz": [
             "Empty",
+            "Practice Weapon",
             "Rapier",
             "Sabre",
             "Flamberge",
@@ -563,6 +572,7 @@ export function inventory_dicts(obj) {
         ],
         "Agate Crossner": [
             "Empty",
+            "Practice Weapon",
             "Broad Edge",
             "Rhomphaia",
             "Bastard Edge",
@@ -573,6 +583,7 @@ export function inventory_dicts(obj) {
         ],
         "Tita Russell": [
             "Empty",
+            "Practice Weapon",
             "P-03",
             "Craft Cannon",
             "G-Impact",
@@ -581,6 +592,7 @@ export function inventory_dicts(obj) {
         ],
         "Zin Vathek": [
             "Empty",
+            "Practice Weapon",
             "Brass Knuckles",
             "Hide Gauntlet",
             "Steel Gauntlet",
@@ -630,6 +642,7 @@ export function inventory_dicts(obj) {
         "Silver Earring",
         "Lighter",
         "Black Bangle",
+        "Glam Choker",
         "White Bracelet",
         "Pearl Earring",
         "Lily Necklace",
@@ -660,6 +673,7 @@ export function inventory_dicts(obj) {
         "Petrify",
         "Shield Breaker",
         "Septium Vein",
+        "Intimidation",
         "Ingenuity",
         "HP 1",
         "HP 2",
@@ -698,7 +712,7 @@ export function inventory_dicts(obj) {
         "Impede 3",
         "Cast 1",
         "Cast 2",
-        //"Cast 3",
+        "Cast 3",
         "Deathblow 1",
         "Deathblow 2",
         "Speed Breaker",
@@ -723,6 +737,7 @@ export function inventory_dicts(obj) {
         "Detection",
         "Haze",
         "Cloak",
+        "Youkai Gem",
     ];
     obj.craft_list = [
         "Empty",

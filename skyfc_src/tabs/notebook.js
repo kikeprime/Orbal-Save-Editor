@@ -19,7 +19,7 @@ export function create_notebook() {
     notebook_callbacks();
 }
 
-function general_callbacks() {
+function notebook_callbacks() {
     const bp = document.getElementById("bp");
     bp.addEventListener("change", () => {
         if (bp.validity.valid)
