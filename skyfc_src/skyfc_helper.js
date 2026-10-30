@@ -76,8 +76,8 @@ export class SkyFCMessageLog {
         this.offset = offset;
         this.data = data;
         this.buffer = buffer;
-        this.id1 = new dt.U32(offset+0x00, data);
-        this.id2 = new dt.U32(offset+0x04, data);
+        this.id1 = new dt.S32(offset+0x00, data);
+        this.id2 = new dt.S32(offset+0x04, data);
     }
     
     get speaker() {

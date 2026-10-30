@@ -36,8 +36,8 @@ function create_entry(idx) {
                 <input
                     type="number"
                     name="id1-${idx}"
-                    min=0
-                    max=${0xFFFFFFFF}
+                    min=-1
+                    max=999999
                     step=1
                     value=${entry.id1.value}
                 >
@@ -47,8 +47,8 @@ function create_entry(idx) {
                 <input
                     type="number"
                     name="id2-${idx}"
-                    min=0
-                    max=${0xFFFFFFFF}
+                    min=-1
+                    max=999999
                     step=1
                     value=${entry.id2.value}
                 >
