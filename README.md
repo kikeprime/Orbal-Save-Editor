@@ -2,6 +2,8 @@
 List of supported games:
 - Trails in the Sky FC PSP
 - Trails in the Sky FC Evolution
+- Trails in the Sky SC PSP
+- Trails in the Sky SC Evolution
 
 An online save editor for the Trails series also known as Kiseki series in the wider The Legend of Heroes / Eiyuu Densetsu series.
 
@@ -9,6 +11,8 @@ Currently focusing on the Trails in the Sky / Sora no Kiseki Trilogy because I j
 
 I'm playing Sky FC Evo but after inspecting PC and PSP Sky FC save files it turned out PC is radically different from PSP/Evo and Evo is just an extension of the PSP save file meaning I can support both.
 Unlike my Kingdom Hearts Save Editor project here I started to discover every single field myself for Evolution which seemed to apply to PSP as well. Fortunately the PSP dictionary data is available in the RA Code Notes. The memory addresses though don't seem to line up with file offsets which is sad.
+
+For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP versions. This save editor currently can't do this but I want to emphasize it's possible.
 
 # Features
 ## Sky FC PSP & Evo features
@@ -39,8 +43,8 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
         - Crafts: Craft, Unlock State, Price
         - S-Crafts
 - Inventory:
-    - Sepith
     - Inventory Slots
+    - Sepith
 - Bracer Notebook:
     - Bracer Points (BP)
 - Monster Guide:
@@ -64,8 +68,62 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
     - Name of the speaker
     - 2 Message IDs
 
+## Sky SC PSP & Evo features
+- Support for both vanilla PSP and Evolution save files.
+- Playtime: Hours, minutes, seconds
+- Difficulty
+- Party
+- Characters:
+    - Stats:
+        - Level & EXP
+        - HP & Max HP
+        - EP & Max EP
+        - CP & possible Max CP
+        - STR & DEF
+        - ATS & ADF
+        - SPD & MOV
+        - DEX & AGL
+        - RNG
+    - Equipment:
+        - Weapon
+        - Armor
+        - Boots
+        - Accessories
+    - Orbment:
+        - Equipped Quartzes
+        - Slot Level
+    - Crafts:
+        - Crafts: Craft, Unlock State, Price
+        - S-Crafts
+- Inventory:
+    - Inventory Slots
+    - Sepith
+- Bracer Notebook:
+    - Bracer Points (BP)
+- Monster Guide:
+    - Combat Notebook:
+        - Battles Fought
+        - Battles Won
+        - Battles Lost
+        - Battles Retreated From
+        - Number of Retries
+        - Evo exclusives:
+            - Enemies Defeated
+            - S-Breaks Triggered
+            - Pre-emptive Attacks
+            - Surprise Attacks
+            - Battles Retreated From (a 2nd field)
+            - Number of Retries (a 2nd field)
+- Evolution Recipe Book:
+    - Sit-Down Meals Made
+    - To-Go Meals Made
+- Evolution Message Log:
+    - 2048 entries but ingame less might be displayed.
+    - Name of the speaker
+    - 2 Message IDs
+
 # Documentation
-For now, `skyfc_src/skyfc.js` double as save file documentation for the respective games. It's another long term goal to create user-friendly documentations.
+For now, `skyfc_src/skyfc.js` and `skysc_src/skysc.js` double as save file documentations for the respective games. It's another long term goal to create user-friendly documentations.
 
 # Known issues
 - It's heavily work in progress so expect issues.
