@@ -57,18 +57,6 @@ function create_character(id, tab) {
 function create_stats(id) {
     const skyfcchardiv = document.getElementById("skyfcchardiv");
     const c = window.skyfc.characters[id];
-    const exp = `
-    <div>
-        <h3>EXP:</h3>
-        <input
-            type="number"
-            id="exp"
-            min=0
-            max=999999
-            step=1
-            value=${c.exp.value}
-        >
-    </div>`;
     const level = `
     <div>
         <h3>Level:</h3>
@@ -79,6 +67,18 @@ function create_stats(id) {
             max=50
             step=1
             value=${c.level.value}
+        >
+    </div>`;
+    const exp = `
+    <div>
+        <h3>EXP:</h3>
+        <input
+            type="number"
+            id="exp"
+            min=0
+            max=999999
+            step=1
+            value=${c.exp.value}
         >
     </div>`;
     const hp = `
@@ -264,8 +264,8 @@ function create_stats(id) {
     skyfcchardiv.innerHTML = `
     <div>
         <div style="display: flex; gap: 20px">
-            ${exp}
             ${level}
+            ${exp}
         </div>
         <div style="display: flex; gap: 20px">
             ${hp}
@@ -300,17 +300,17 @@ function create_stats(id) {
 
 function stats_callbacks(id) {
     const c = window.skyfc.characters[id];
-    const exp = document.getElementById("exp");
-    exp.addEventListener("change", () => {
-        if (exp.validity.valid)
-            c.exp.value = exp.value;
-        exp.value = c.exp.value;
-    });
     const level = document.getElementById("level");
     level.addEventListener("change", () => {
         if (level.validity.valid)
             c.level.value = level.value;
         level.value = c.level.value;
+    });
+    const exp = document.getElementById("exp");
+    exp.addEventListener("change", () => {
+        if (exp.validity.valid)
+            c.exp.value = exp.value;
+        exp.value = c.exp.value;
     });
     const hp = document.getElementById("hp");
     hp.addEventListener("change", () => {
@@ -493,10 +493,10 @@ function create_orbment(id) {
         const checked = c.orbment[i] & (1 << 16) ? "checked" : "";
         orbment += `
         <div style="display: flex; align-items: center; gap: 10px">
-            <input class="skyfc-orbment" type="checkbox" value=${i} ${checked}>
             <select name=${i}>
                 ${quartz_options}
             </select>
+            <input class="skyfc-orbment" type="checkbox" value=${i} ${checked}>
         </div>`
     }
     skyfcchardiv.innerHTML = `

@@ -33,8 +33,8 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
         - Boots
         - Accessories
     - Orbment:
-        - Slot Unlock State
         - Equipped Quartzes
+        - Slot Unlock State
     - Crafts:
         - Crafts: Craft, Unlock State, Price
         - S-Crafts

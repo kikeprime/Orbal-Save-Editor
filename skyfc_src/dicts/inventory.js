@@ -1,6 +1,5 @@
 export function inventory_dicts(obj) {
-    obj.inventory_dict = {
-        "Empty": 0x0000,
+    obj.weapon_dict = {
         // Estelle
         "Birch Staff": 0x0001,
         "Pile Rod": 0x0002,
@@ -66,6 +65,10 @@ export function inventory_dicts(obj) {
         "Cestus": 0x00D5,
         "Steel Gauntlet": 0x00D6,
         "Daedalus Arm": 0x00D9,
+        // All
+        "Practice Weapon": 0x03E8,
+    };
+    obj.equipment_dict = {
         // Armors
         "Leather Vest": 0x00F1,
         "Armor Vest": 0x00F2,
@@ -124,6 +127,8 @@ export function inventory_dicts(obj) {
         "Woolly Knit-Hat": 0x014A,
         "Work Gloves": 0x014D,
         "Cool Necklace": 0x0150,
+    };
+    obj.food_dict = {
         // Food
         "Maple Cookie": 0x0191,
         "Sweet Sponge Cake": 0x0192,
@@ -172,6 +177,8 @@ export function inventory_dicts(obj) {
         "Gorgeous Crepe": 0x01BD,
         "Special Ice Cream": 0x01BE,
         "Royal Crepe": 0x01BF,
+    };
+    obj.consumable_dict = {
         // Consumables
         "Tear Balm": 0x01F5,
         "Teara Balm": 0x01F6,
@@ -186,6 +193,8 @@ export function inventory_dicts(obj) {
         "EP Charge EX": 0x01FF,
         "Smelling Salts": 0x0200,
         "Battle Scope": 0x0201,
+    };
+    obj.book_dict = {
         // Books
         "Bracer Notebook": 0x0208,
         "Recipe Book": 0x020D,
@@ -201,6 +210,8 @@ export function inventory_dicts(obj) {
         "Carnelia - Chapter 9": 0x021A,
         "Carnelia - Chapter 10": 0x021B,
         "Carnelia - Chapter Finale": 0x021C,
+    };
+    obj.quartz_dict = {
         // Quartzes
         "HP 1": 0x0258,
         "HP 2": 0x0259,
@@ -274,6 +285,8 @@ export function inventory_dicts(obj) {
         "Dragon Vision": 0x02D9,
         "Hare": 0x02DA,
         "Detection": 0x02DB,
+    };
+    obj.key_item_dict = {
         // Key Items, Books
         "Guild Referral 1": 0x0320,
         "Mayor's Referral": 0x0321,
@@ -331,7 +344,7 @@ export function inventory_dicts(obj) {
         "Bracer Emblem": 0x035D,
         "Letter to Faye": 0x035E,
         "Liberl Kingdom Map": 0x035F,
-        "Attn. Factory Head": 0x0360,
+        "Attn. Factory Chief": 0x0360,
         "Detector Jammer": 0x0362,
         "Orbal Calculator": 0x0364,
         "Zemuria Moss": 0x0365,
@@ -352,6 +365,8 @@ export function inventory_dicts(obj) {
         "Hertz's Adventure(1)": 0x0374,
         "Room 202 Key": 0x0375,
         "Luke's Journal": 0x0376,
+    };
+    obj.ingredient_dict = {
         // Ingredients
         "Firefly Fungus": 0x0384,
         "Acerbic Tomato": 0x0385,
@@ -415,10 +430,20 @@ export function inventory_dicts(obj) {
         "Rainbow Trout": 0x03AE,
         "Tiger Rockfish": 0x03AF,
         "Salmon": 0x03B0,
-        // Weapon
-        "Practice Weapon": 0x03E8,
+    };
+    obj.inventory_dict = {
+        "Empty": 0x0000,
+        ...obj.weapon_dict,
+        ...obj.equipment_dict,
+        ...obj.food_dict,
+        ...obj.consumable_dict,
+        ...obj.book_dict,
+        ...obj.quartz_dict,
+        ...obj.key_item_dict,
+        ...obj.ingredient_dict,
     };
     obj.art_dict = {
+        "Empty": 0x0000,
         "Stone Hammer": 0x000A,
         "Earth Lance": 0x000B,
         "Petrify Breath": 0x000C,
@@ -461,7 +486,8 @@ export function inventory_dicts(obj) {
         "La Teara": 0x0073,
         "Curia": 0x0076,
         "La Curia": 0x0077,
-        "Revive/Thelas": 0x0078,
+        "Thelas": 0x0078,
+        "Athelas": 0x0079,
     };
     obj.craft_dict = {
         "Empty": 0x0000,
