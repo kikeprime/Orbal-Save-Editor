@@ -32,7 +32,15 @@ export class SkyFCCharacter {
         this.accessory2 = new dt.U16(0x0280 + this.idx * 0x0A + 0x08, data);
         // 2 shorts where the first is the art ID and the 2nd is 1 if the slot is filled else 0.
         this.arts = dt.Array(dt.U32, 80, 0x02D0 + this.idx * 0x0140, data);
-        // Again 2 shorts but the 2nd's high byte has value here so needs more investigation.
+        this.arts = [];
+        for (let i = 0; i < 80; i++) {
+            const offset = 0x02D0 + this.idx * 0x0140 + i * 0x04;
+            this.arts.push({
+                "art": new dt.U16(offset+0x00, data),
+                "state": new dt.U16(offset+0x02, data),
+            });
+        }
+        // 1 short, 2 bytes
         this.crafts = dt.Array(dt.U32, 10, 0x0CD0 + this.idx * 0x28, data);
         this.crafts = [];
         for (let i = 0; i < 10; i++) {

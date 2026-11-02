@@ -499,9 +499,30 @@ function create_orbment(id) {
             <input class="skyfc-orbment" type="checkbox" value=${i} ${checked}>
         </div>`
     }
+    const art_options = Object.entries(window.skyfc.art_dict)
+        .map(([label, value]) => `\n\t<option value=${value}>${label}</option>`)
+        .join("");
+    let arts = "";
+    for (let i = 0; i < 80; i++) {
+        const checked = c.arts[i].state.value == 1 ? "checked" : "";
+        arts += `
+        <div style="display: flex; align-items: center; gap: 10px">
+            <select name=${i}>
+                ${art_options}
+            </select>
+            <input class="skyfc-art" type="checkbox" value=${i} ${checked}>
+        </div>`
+    }
     skyfcchardiv.innerHTML = `
-    <div id="orbment">
-        ${orbment}
+    <div style="display: flex; gap: 50px">
+        <div id="orbment">
+            <h3>Quartzes:</h3>
+            ${orbment}
+        </div>
+        <div id="arts">
+            <h3>Arts:</h3>
+            ${arts}
+        </div>
     </div>`;
     orbment_callbacks(id);
 }
@@ -524,6 +545,21 @@ function orbment_callbacks(id) {
                 c.orbment[e.target.value] |= (1 << 16);
             else
                 c.orbment[e.target.value] &= ~(1 << 16);
+        }
+    });
+    const arts = document.getElementById("arts");
+    arts.querySelectorAll("select").forEach(select => {
+        select.value = c.arts[select.name].art.value;
+    });
+    arts.addEventListener("change", (e) => {
+        if (e.target.type != "checkbox") {
+            c.arts[e.target.name].art.value = e.target.value;
+        }
+        else {
+            if (e.target.checked)
+                c.arts[e.target.value].state.value = 1;
+            else
+                c.arts[e.target.value].state.value = 0;
         }
     });
 }

@@ -39,6 +39,7 @@ For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP 
     - Orbment:
         - Equipped Quartzes
         - Slot Unlock State
+        - Arts
     - Crafts:
         - Crafts: Craft, Unlock State, Price
         - S-Crafts
@@ -92,6 +93,7 @@ For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP 
     - Orbment:
         - Equipped Quartzes
         - Slot Level
+        - Arts
     - Crafts:
         - Crafts: Craft, Unlock State, Price
         - S-Crafts
