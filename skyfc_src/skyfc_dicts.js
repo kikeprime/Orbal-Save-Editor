@@ -16,6 +16,12 @@ function main_dicts(obj) {
         "Agate": 5,
         "Tita": 6,
         "Zin": 7,
+        "Professor Alba": 0x0D,
+        "Nial": 0x0E,
+        "Dorothy": 0x0F,
+        "Mine Chief": 0x32,
+        "Lila": 0x33,
+        "Hardt": 0x34,
         "None": 255,
     };
 }

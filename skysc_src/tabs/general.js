@@ -15,19 +15,35 @@ export function create_general() {
     const party = `
     <div>
         <h3>Party:</h3>
-        <div id="party" style="display: flex">
-            <select name=0>
-                ${party_options}
-            </select>
-            <select name=1>
-                ${party_options}
-            </select>
-            <select name=2>
-                ${party_options}
-            </select>
-            <select name=3>
-                ${party_options}
-            </select>
+        <div id="party">
+            <div style="display: flex">
+                <select name=0>
+                    ${party_options}
+                </select>
+                <select name=1>
+                    ${party_options}
+                </select>
+                <select name=2>
+                    ${party_options}
+                </select>
+                <select name=3>
+                    ${party_options}
+                </select>
+            </div>
+            <div style="display: flex">
+                <select name=4>
+                    ${party_options}
+                </select>
+                <select name=5>
+                    ${party_options}
+                </select>
+                <select name=6>
+                    ${party_options}
+                </select>
+                <select name=7>
+                    ${party_options}
+                </select>
+            </div>
         </div>
     </div>`;
     const mira = `

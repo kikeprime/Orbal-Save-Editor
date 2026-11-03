@@ -18,8 +18,9 @@ For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP 
 ## Sky FC PSP & Evo features
 - Support for both vanilla PSP and Evolution save files.
 - Playtime: Hours, minutes, seconds
+- Mira
 - Difficulty
-- Party
+- Party: 8 slots
 - Characters:
     - Stats:
         - Level & EXP
@@ -72,8 +73,9 @@ For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP 
 ## Sky SC PSP & Evo features
 - Support for both vanilla PSP and Evolution save files.
 - Playtime: Hours, minutes, seconds
+- Mira
 - Difficulty
-- Party
+- Party: 8 slots
 - Characters:
     - Stats:
         - Level & EXP
@@ -120,7 +122,7 @@ For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP 
     - Sit-Down Meals Made
     - To-Go Meals Made
 - Evolution Message Log:
-    - 2048 entries but ingame less might be displayed.
+    - 2048 entries but ingame 2000 are displayed.
     - Name of the speaker
     - 2 Message IDs
 
