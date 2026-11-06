@@ -76,9 +76,15 @@ export default class SkyFC {
         }
     }
 
-    save() {
-        yamaneko_checksum(this.data);
-        return new Blob([this.buffer], { type: "application/octet-stream" });
+    save(evo) {
+        let data = this.data;
+        let buffer = this.buffer;
+        if (this.evo && !evo) {
+            buffer = this.buffer.slice(0, 0x16FF4);
+            data = new DataView(buffer.buffer);
+        }
+        yamaneko_checksum(data);
+        return new Blob([buffer], { type: "application/octet-stream" });
     }
     
     syssave() {
@@ -87,6 +93,12 @@ export default class SkyFC {
     
     menu() {
         const app = document.getElementById("app");
+        const evo_downgrade = !this.evo ? "" : `
+        <details>
+            <summary><h3>Evolution to PSP Downgrade</h3></summary>
+            <label>Change the Select Game to Sky FC PSP before clicking on Save!</label>
+            <label>See the README in the source repo for more details!</label>
+        </details>`;
         const tabs_skyfc_html = `
         <div>
             <h2>Sky FC Tabs:</h2>
@@ -102,7 +114,7 @@ export default class SkyFC {
                 <option value="Misc">Misc</option>
             </select>
         </div>`;
-        app.innerHTML = `${tabs_skyfc_html}<div id="skyfcdiv"></div>`;
+        app.innerHTML = `${evo_downgrade}${tabs_skyfc_html}<div id="skyfcdiv"></div>`;
         const tabs_skyfc = document.getElementById("tabs_skyfc");
         const skyfcdiv = document.getElementById("skyfcdiv");
         tabs.create_general();

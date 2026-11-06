@@ -58,12 +58,25 @@ export function create_general() {
             value=${window.skysc.mira.value}
         >
     </div>`;
+    const medals = `
+    <div>
+        <h3>Casino Medals:</h3>
+        <input
+            type="number"
+            id="medals"
+            min=0
+            max=999999
+            step=1
+            value=${window.skysc.medals.value}
+        >
+    </div>`;
     skyscdiv.innerHTML = `
     <div>
         ${playtime}
         ${difficulty}
         ${party}
         ${mira}
+        ${medals}
     </div>`;
     general_callbacks();
 }
@@ -147,5 +160,11 @@ function general_callbacks() {
         if (mira.validity.valid)
             window.skysc.mira.value = mira.value;
         mira.value = window.skysc.mira.value;
+    });
+    const medals = document.getElementById("medals");
+    medals.addEventListener("change", () => {
+        if (medals.validity.valid)
+            window.skysc.medals.value = medals.value;
+        medals.value = window.skysc.medals.value;
     });
 }

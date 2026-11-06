@@ -75,6 +75,18 @@ export default class SkySC {
         this.battles_won_fc = new dt.U16(0x2059C, this.data);
         this.battles_retreated_fc = new dt.U16(0x205A0, this.data);
         
+        // Fishing Book
+        // 0x2232A Gold Angelfish data
+        // 0x225A0 Kasago data
+        // Temp struct so the following relative offsets can change
+        // once I catch more fish to correctly identify the struct's actual bounds.
+        // 0x00 Max Recorded // Vita3K Android text bug makes it currently a guess but there is no other non zero byte so this must be it.
+        // 0x02 Fishing Spot
+        // 0x42 Times Caught
+        // 0x7A Bait Used bitfield
+        
+        this.medals = new dt.U32(0x22A8C, this.data);
+        
         // Evolution stuff
         // Starts at 0x29AC8
         if (this.evo) {
@@ -93,9 +105,15 @@ export default class SkySC {
         }
     }
 
-    save() {
-        yamaneko_checksum(this.data);
-        return new Blob([this.buffer], { type: "application/octet-stream" });
+    save(evo) {
+        let data = this.data;
+        let buffer = this.buffer;
+        if (this.evo && !evo) {
+            buffer = this.buffer.slice(0, 0x29AD0);
+            data = new DataView(buffer.buffer);
+        }
+        yamaneko_checksum(data);
+        return new Blob([buffer], { type: "application/octet-stream" });
     }
     
     syssave() {
@@ -104,6 +122,12 @@ export default class SkySC {
     
     menu() {
         const app = document.getElementById("app");
+        const evo_downgrade = !this.evo ? "" : `
+        <details>
+            <summary><h3>Evolution to PSP Downgrade</h3></summary>
+            <label>Change the Select Game to Sky SC PSP before clicking on Save!</label>
+            <label>See the README in the source repo for more details!</label>
+        </details>`;
         const tabs_skysc_html = `
         <div>
             <h2>Sky SC Tabs:</h2>
@@ -119,7 +143,7 @@ export default class SkySC {
                 <option value="Misc">Misc</option>
             </select>
         </div>`;
-        app.innerHTML = `${tabs_skysc_html}<div id="skyscdiv"></div>`;
+        app.innerHTML = `${evo_downgrade}${tabs_skysc_html}<div id="skyscdiv"></div>`;
         const tabs_skysc = document.getElementById("tabs_skysc");
         const skyscdiv = document.getElementById("skyscdiv");
         tabs.create_general();

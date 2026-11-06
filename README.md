@@ -12,15 +12,23 @@ Currently focusing on the Trails in the Sky / Sora no Kiseki Trilogy because I j
 I'm playing Sky FC Evo but after inspecting PC and PSP Sky FC save files it turned out PC is radically different from PSP/Evo and Evo is just an extension of the PSP save file meaning I can support both.
 Unlike my Kingdom Hearts Save Editor project here I started to discover every single field myself for Evolution which seemed to apply to PSP as well. Fortunately the PSP dictionary data is available in the RA Code Notes. The memory addresses though don't seem to line up with file offsets which is sad.
 
-For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP versions. This save editor currently can't do this but I want to emphasize it's possible.
-
 # Features
 ## Sky FC PSP & Evo features
 - Support for both vanilla PSP and Evolution save files.
-- Playtime: Hours, minutes, seconds
-- Mira
-- Difficulty
-- Party: 8 slots
+- Evolution to PSP Downgrade:
+    1. Load an Evo save file in Sky FC Evo mode.
+    2. Remove equipped Evo exlcusive quartzes and equipment because you can't remove them ingame.
+    3. You can keep them in your inventory instead.
+    4. While your Evo save is loaded change Select Game to Sky FC PSP.
+    5. Click on Save.
+    - Known Data Loss:
+        - Message Log
+        - Evo exclusive Combat Notebook statistics listed below.
+- General:
+    - Playtime: Hours, minutes, seconds
+    - Difficulty
+    - Party: 8 slots
+    - Mira
 - Characters:
     - Stats:
         - Level & EXP
@@ -72,10 +80,21 @@ For both Sky FC Evo and Sky SC Evo the save files can be downgraded for the PSP 
 
 ## Sky SC PSP & Evo features
 - Support for both vanilla PSP and Evolution save files.
-- Playtime: Hours, minutes, seconds
-- Mira
-- Difficulty
-- Party: 8 slots
+- Evolution to PSP Downgrade:
+    1. Load an Evo save file in Sky SC Evo mode.
+    2. Remove equipped Evo exlcusive quartzes and equipment because you can't remove them ingame.
+    3. You can keep them in your inventory instead.
+    4. While your Evo save is loaded change Select Game to Sky SC PSP.
+    5. Click on Save.
+    - Known Data Loss:
+        - Message Log
+        - Evo exclusive Combat Notebook statistics listed below.
+- General:
+    - Playtime: Hours, minutes, seconds
+    - Difficulty
+    - Party: 8 slots
+    - Mira
+    - Casino Medals
 - Characters:
     - Stats:
         - Level & EXP

@@ -1202,13 +1202,4 @@ export function inventory_dicts(obj) {
         "Disable",
         "Aural Blast",
     ];
-    obj.element_list = [
-        "Earth",
-        "Water",
-        "Fire",
-        "Wind",
-        "Time",
-        "Space",
-        "Mirage",
-    ];
 }

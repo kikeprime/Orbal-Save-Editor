@@ -442,7 +442,6 @@ export function inventory_dicts(obj) {
         ...obj.key_item_dict,
         ...obj.ingredient_dict,
     };
-    const art0077 = obj.evo ? "La Curia" : "Innocent Arc";
     obj.art_dict = {
         "Empty": 0x0000,
         "Stone Hammer": 0x000A,
@@ -820,14 +819,5 @@ export function inventory_dicts(obj) {
         "Cannon Impulse",
         "Disable",
         "Aural Blast",
-    ];
-    obj.element_list = [
-        "Earth",
-        "Water",
-        "Fire",
-        "Wind",
-        "Time",
-        "Space",
-        "Mirage",
     ];
 }

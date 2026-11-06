@@ -133,12 +133,11 @@
             const save = document.getElementById("save");
             save.addEventListener("click", async () => {
                 switch (game.value) {
-                    case "skyfc":
-                    case "skyfcevo": {
+                    case "skyfc": {
                         try {
                             const picker = await window.showSaveFilePicker({suggestedName: skyfc.file.name});
                             const writable = await picker.createWritable();
-                            await writable.write(skyfc.save());
+                            await writable.write(skyfc.save(false));
                             await writable.close();
                         } catch (e) {
                             if (e.name == "AbortError") return;
@@ -157,12 +156,57 @@
                         }
                         break;
                     }
-                    case "skysc":
+                    case "skyfcevo": {
+                        try {
+                            const picker = await window.showSaveFilePicker({suggestedName: skyfc.file.name});
+                            const writable = await picker.createWritable();
+                            await writable.write(skyfc.save(true));
+                            await writable.close();
+                        } catch (e) {
+                            if (e.name == "AbortError") return;
+                            return e;
+                        }
+                        if (skyfc.sysfile != null) {
+                            try {
+                                const picker = await window.showSaveFilePicker({suggestedName: skyfc.sysfile.name});
+                                const writable = await picker.createWritable();
+                                await writable.write(skyfc.syssave());
+                                await writable.close();
+                            } catch (e) {
+                                if (e.name == "AbortError") return;
+                                return e;
+                            }
+                        }
+                        break;
+                    }
+                    case "skysc": {
+                        try {
+                            const picker = await window.showSaveFilePicker({suggestedName: skysc.file.name});
+                            const writable = await picker.createWritable();
+                            await writable.write(skysc.save(false));
+                            await writable.close();
+                        } catch (e) {
+                            if (e.name == "AbortError") return;
+                            return e;
+                        }
+                        if (skysc.sysfile != null) {
+                            try {
+                                const picker = await window.showSaveFilePicker({suggestedName: skysc.sysfile.name});
+                                const writable = await picker.createWritable();
+                                await writable.write(skysc.syssave());
+                                await writable.close();
+                            } catch (e) {
+                                if (e.name == "AbortError") return;
+                                return e;
+                            }
+                        }
+                        break;
+                    }
                     case "skyscevo": {
                         try {
                             const picker = await window.showSaveFilePicker({suggestedName: skysc.file.name});
                             const writable = await picker.createWritable();
-                            await writable.write(skysc.save());
+                            await writable.write(skysc.save(true));
                             await writable.close();
                         } catch (e) {
                             if (e.name == "AbortError") return;

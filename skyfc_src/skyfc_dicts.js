@@ -24,4 +24,13 @@ function main_dicts(obj) {
         "Hardt": 0x34,
         "None": 255,
     };
+    obj.element_list = [
+        "Earth",
+        "Water",
+        "Fire",
+        "Wind",
+        "Time",
+        "Space",
+        "Mirage",
+    ];
 }

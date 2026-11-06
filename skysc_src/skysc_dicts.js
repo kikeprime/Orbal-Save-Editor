@@ -25,4 +25,13 @@ function main_dicts(obj) {
         "Julia": 14,
         "None": 255,
     };
+    obj.element_list = [
+        "Earth",
+        "Water",
+        "Fire",
+        "Wind",
+        "Time",
+        "Space",
+        "Mirage",
+    ];
 }
