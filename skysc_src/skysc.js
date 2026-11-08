@@ -75,15 +75,10 @@ export default class SkySC {
         this.battles_won_fc = new dt.U16(0x2059C, this.data);
         this.battles_retreated_fc = new dt.U16(0x205A0, this.data);
         
-        // Fishing Book
-        // 0x2232A Gold Angelfish data
-        // 0x225A0 Kasago data
-        // Temp struct so the following relative offsets can change
-        // once I catch more fish to correctly identify the struct's actual bounds.
-        // 0x00 Max Recorded // Vita3K Android text bug makes it currently a guess but there is no other non zero byte so this must be it.
-        // 0x02 Fishing Spot
-        // 0x42 Times Caught
-        // 0x7A Bait Used bitfield
+        this.fishing_book = []; // There are 26 kinds of fish.
+        Object.entries(this.fish_dict).forEach(([fish, i]) => {
+            this.fishing_book.push(new h.SkySCFish(fish, 0x21BC8+i*0x7E, this.data));
+        });
         
         this.medals = new dt.U32(0x22A8C, this.data);
         
@@ -137,7 +132,8 @@ export default class SkySC {
                 <option value="Inventory">Inventory</option>
                 <option value="Bracer Notebook">Bracer Notebook</option>
                 <option value="Monster Guide">Monster Guide</option>
-                ${this.evo ? `<option value="Recipe Book">Recipe Book</option>` : ""}
+                <option value="Recipe Book">Recipe Book</option>
+                <option value="Fishing Book">Fishing Book</option>
                 ${this.evo ? `<option value="Message Log">Message Log</option>` : ""}
                 <option value="Config">Config</option>
                 <option value="Misc">Misc</option>
@@ -171,6 +167,10 @@ export default class SkySC {
                 }
                 case "Recipe Book": {
                     tabs.create_recipe_book();
+                    break;
+                }
+                case "Fishing Book": {
+                    tabs.create_fishing_book();
                     break;
                 }
                 case "Message Log": {

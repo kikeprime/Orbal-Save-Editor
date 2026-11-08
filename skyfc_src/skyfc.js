@@ -108,7 +108,7 @@ export default class SkyFC {
                 <option value="Inventory">Inventory</option>
                 <option value="Bracer Notebook">Bracer Notebook</option>
                 <option value="Monster Guide">Monster Guide</option>
-                ${this.evo ? `<option value="Recipe Book">Recipe Book</option>` : ""}
+                <option value="Recipe Book">Recipe Book</option>
                 ${this.evo ? `<option value="Message Log">Message Log</option>` : ""}
                 <option value="Config">Config</option>
                 <option value="Misc">Misc</option>

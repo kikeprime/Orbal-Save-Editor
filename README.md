@@ -70,9 +70,10 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
             - Surprise Attacks
             - Battles Retreated From (a 2nd field)
             - Number of Retries
-- Evolution Recipe Book:
-    - Sit-Down Meals Made
-    - To-Go Meals Made
+- Recipe Book:
+    - Evo exclusive stats:
+        - Sit-Down Meals Made
+        - To-Go Meals Made
 - Evolution Message Log:
     - 1024 entries but ingame only the first 999 are displayed.
     - Name of the speaker
@@ -137,9 +138,14 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
             - Surprise Attacks
             - Battles Retreated From (a 2nd field)
             - Number of Retries (a 2nd field)
-- Evolution Recipe Book:
-    - Sit-Down Meals Made
-    - To-Go Meals Made
+- Recipe Book:
+    - Evo exclusive stats:
+        - Sit-Down Meals Made
+        - To-Go Meals Made
+- Fishing Book:
+    - Fish size records
+    - Spots the fish was caught recently. Ingame only 5 out of 16 slots are displayed.
+    - Fish caught counters for each spot.
 - Evolution Message Log:
     - 2048 entries but ingame 2000 are displayed.
     - Name of the speaker

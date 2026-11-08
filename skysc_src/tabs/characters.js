@@ -1,6 +1,6 @@
 export function create_characters() {
     const skyscdiv = document.getElementById("skyscdiv");
-    const char_options = window.skysc.characters
+    const char_options = skysc.characters
         .map((c, idx) => `\n\t<option value=${idx}>${c.name}</option>`)
         .join("");
     skyscdiv.innerHTML = `
@@ -56,7 +56,7 @@ function create_character(id, tab) {
 
 function create_stats(id) {
     const skyscchardiv = document.getElementById("skyscchardiv");
-    const c = window.skysc.characters[id];
+    const c = skysc.characters[id];
     const level = `
     <div>
         <h3>Level:</h3>
@@ -299,7 +299,7 @@ function create_stats(id) {
 }
 
 function stats_callbacks(id) {
-    const c = window.skysc.characters[id];
+    const c = skysc.characters[id];
     const level = document.getElementById("level");
     level.addEventListener("change", () => {
         if (level.validity.valid)
@@ -394,18 +394,18 @@ function stats_callbacks(id) {
 
 function create_equipment(id) {
     const skyscchardiv = document.getElementById("skyscchardiv");
-    const c = window.skysc.characters[id];
-    const weapon_options = window.skysc.weapon_list[c.name]
-        .map((label) => `\n\t<option value=${window.skysc.inventory_dict[label]}>${label}</option>`)
+    const c = skysc.characters[id];
+    const weapon_options = skysc.weapon_list[c.name]
+        .map((label) => `\n\t<option value=${skysc.inventory_dict[label]}>${label}</option>`)
         .join("");
-    const armor_options = window.skysc.armor_list
-        .map((label) => `\n\t<option value=${window.skysc.inventory_dict[label]}>${label}</option>`)
+    const armor_options = skysc.armor_list
+        .map((label) => `\n\t<option value=${skysc.inventory_dict[label]}>${label}</option>`)
         .join("");
-    const boots_options = window.skysc.boots_list
-        .map((label) => `\n\t<option value=${window.skysc.inventory_dict[label]}>${label}</option>`)
+    const boots_options = skysc.boots_list
+        .map((label) => `\n\t<option value=${skysc.inventory_dict[label]}>${label}</option>`)
         .join("");
-    const accessory_options = window.skysc.accessory_list
-        .map((label) => `\n\t<option value=${window.skysc.inventory_dict[label]}>${label}</option>`)
+    const accessory_options = skysc.accessory_list
+        .map((label) => `\n\t<option value=${skysc.inventory_dict[label]}>${label}</option>`)
         .join("");
     const weapon = `
     <div>
@@ -454,7 +454,7 @@ function create_equipment(id) {
 }
 
 function equipment_callbacks(id) {
-    const c = window.skysc.characters[id];
+    const c = skysc.characters[id];
     const weapon = document.getElementById("weapon");
     weapon.value = c.weapon.value;
     weapon.addEventListener("change", () => {
@@ -484,9 +484,9 @@ function equipment_callbacks(id) {
 
 function create_orbment(id) {
     const skyscchardiv = document.getElementById("skyscchardiv");
-    const c = window.skysc.characters[id];
-    const quartz_options = window.skysc.quartz_list
-        .map((label) => `\n\t<option value=${window.skysc.inventory_dict[label]}>${label}</option>`)
+    const c = skysc.characters[id];
+    const quartz_options = skysc.quartz_list
+        .map((label) => `\n\t<option value=${skysc.inventory_dict[label]}>${label}</option>`)
         .join("");
     let orbment = "";
     for (let i = 0; i < 6; i++) {
@@ -504,7 +504,7 @@ function create_orbment(id) {
             </select>
         </div>`
     }
-    const art_options = Object.entries(window.skysc.art_dict)
+    const art_options = Object.entries(skysc.art_dict)
         .map(([label, value]) => `\n\t<option value=${value}>${label}</option>`)
         .join("");
     let arts = "";
@@ -533,7 +533,7 @@ function create_orbment(id) {
 }
 
 function orbment_callbacks(id) {
-    const c = window.skysc.characters[id];
+    const c = skysc.characters[id];
     const orbment = document.getElementById("orbment");
     orbment.querySelectorAll("select.skysc-orbment").forEach(select => {
         select.value = c.orbment[select.name].quartz.value;
@@ -566,9 +566,9 @@ function orbment_callbacks(id) {
 
 function create_crafts(id) {
     const skyscchardiv = document.getElementById("skyscchardiv");
-    const c = window.skysc.characters[id];
-    const craft_options = window.skysc.craft_list
-        .map(label => `<option value=${window.skysc.craft_dict[label]}>${label}</option>`)
+    const c = skysc.characters[id];
+    const craft_options = skysc.craft_list
+        .map(label => `<option value=${skysc.craft_dict[label]}>${label}</option>`)
         .join("");
     let crafts = "";
     for (let i = 0; i < c.crafts.length; i++) {
@@ -611,7 +611,7 @@ function create_crafts(id) {
 }
 
 function crafts_callbacks(id) {
-    const c = window.skysc.characters[id];
+    const c = skysc.characters[id];
     const crafts = document.getElementById("crafts");
     crafts.querySelectorAll("select").forEach(select => {
         select.value = c.crafts[select.name].craft.value;

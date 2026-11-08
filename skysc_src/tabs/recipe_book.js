@@ -9,7 +9,7 @@ export function create_recipe_book() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.sitdown_meals.value}
+            value=${skysc.sitdown_meals.value}
         >
     </div>`;
     const togo_meals = `
@@ -21,7 +21,7 @@ export function create_recipe_book() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.togo_meals.value}
+            value=${skysc.togo_meals.value}
         >
     </div>`;
     skyscdiv.innerHTML = `
@@ -36,13 +36,13 @@ function recipe_book_callbacks() {
     const sitdown_meals = document.getElementById("sitdown_meals");
     sitdown_meals.addEventListener("change", () => {
         if (sitdown_meals.validity.valid)
-            window.skysc.sitdown_meals.value = sitdown_meals.value;
-        sitdown_meals.value = window.skysc.sitdown_meals.value;
+            skysc.sitdown_meals.value = sitdown_meals.value;
+        sitdown_meals.value = skysc.sitdown_meals.value;
     });
     const togo_meals = document.getElementById("togo_meals");
     togo_meals.addEventListener("change", () => {
         if (togo_meals.validity.valid)
-            window.skysc.togo_meals.value = togo_meals.value;
-        togo_meals.value = window.skysc.togo_meals.value;
+            skysc.togo_meals.value = togo_meals.value;
+        togo_meals.value = skysc.togo_meals.value;
     });
 }

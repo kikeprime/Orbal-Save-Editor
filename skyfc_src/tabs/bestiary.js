@@ -9,7 +9,7 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skyfc.battles_fought.value}
+            value=${skyfc.battles_fought.value}
         >
     </div>`;
     const battles_won = `
@@ -21,7 +21,7 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skyfc.battles_won.value}
+            value=${skyfc.battles_won.value}
         >
     </div>`;
     const battles_lost = `
@@ -33,7 +33,7 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skyfc.battles_lost.value}
+            value=${skyfc.battles_lost.value}
         >
     </div>`;
     const battles_retreated = `
@@ -45,10 +45,10 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skyfc.battles_retreated.value}
+            value=${skyfc.battles_retreated.value}
         >
     </div>`;
-    const battles_retreated_evo = !window.skyfc.evo ? "" : `
+    const battles_retreated_evo = !skyfc.evo ? "" : `
     <div>
         <h3>Battles Retreated From (Evo):</h3>
         <input
@@ -57,10 +57,10 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skyfc.battles_retreated_evo.value}
+            value=${skyfc.battles_retreated_evo.value}
         >
     </div>`;
-    const enemies_defeated = !window.skyfc.evo ? "" : `
+    const enemies_defeated = !skyfc.evo ? "" : `
     <div>
         <h3>Enemies Defeated:</h3>
         <input
@@ -69,10 +69,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.enemies_defeated.value}
+            value=${skyfc.enemies_defeated.value}
         >
     </div>`;
-    const sbreaks = !window.skyfc.evo ? "" : `
+    const sbreaks = !skyfc.evo ? "" : `
     <div>
         <h3>S-Breaks Triggered:</h3>
         <input
@@ -81,10 +81,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.sbreaks.value}
+            value=${skyfc.sbreaks.value}
         >
     </div>`;
-    const preemptive_attacks = !window.skyfc.evo ? "" : `
+    const preemptive_attacks = !skyfc.evo ? "" : `
     <div>
         <h3>Pre-emptive Attacks:</h3>
         <input
@@ -93,10 +93,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.preemptive_attacks.value}
+            value=${skyfc.preemptive_attacks.value}
         >
     </div>`;
-    const surprise_attacks = !window.skyfc.evo ? "" : `
+    const surprise_attacks = !skyfc.evo ? "" : `
     <div>
         <h3>Surprise Attacks:</h3>
         <input
@@ -105,10 +105,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.surprise_attacks.value}
+            value=${skyfc.surprise_attacks.value}
         >
     </div>`;
-    const retries = !window.skyfc.evo ? "" : `
+    const retries = !skyfc.evo ? "" : `
     <div>
         <h3>Number of Retries:</h3>
         <input
@@ -117,7 +117,7 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.retries.value}
+            value=${skyfc.retries.value}
         >
     </div>`;
     skyfcdiv.innerHTML = `
@@ -140,63 +140,63 @@ function bestiary_callbacks() {
     const battles_fought = document.getElementById("battles_fought");
     battles_fought.addEventListener("change", () => {
         if (battles_fought.validity.valid)
-            window.skyfc.battles_fought.value = battles_fought.value;
-        battles_fought.value = window.skyfc.battles_fought.value;
+            skyfc.battles_fought.value = battles_fought.value;
+        battles_fought.value = skyfc.battles_fought.value;
     });
     const battles_won = document.getElementById("battles_won");
     battles_fought.addEventListener("change", () => {
         if (battles_won.validity.valid)
-            window.skyfc.battles_won.value = battles_won.value;
-        battles_won.value = window.skyfc.battles_won.value;
+            skyfc.battles_won.value = battles_won.value;
+        battles_won.value = skyfc.battles_won.value;
     });
     const battles_lost = document.getElementById("battles_lost");
     battles_lost.addEventListener("change", () => {
         if (battles_lost.validity.valid)
-            window.skyfc.battles_lost.value = battles_lost.value;
-        battles_lost.value = window.skyfc.battles_lost.value;
+            skyfc.battles_lost.value = battles_lost.value;
+        battles_lost.value = skyfc.battles_lost.value;
     });
     const battles_retreated = document.getElementById("battles_retreated");
     battles_retreated.addEventListener("change", () => {
         if (battles_retreated.validity.valid)
-            window.skyfc.battles_retreated.value = battles_retreated.value;
-        battles_retreated.value = window.skyfc.battles_retreated.value;
+            skyfc.battles_retreated.value = battles_retreated.value;
+        battles_retreated.value = skyfc.battles_retreated.value;
     });
-    if (window.skyfc.evo) {
+    if (skyfc.evo) {
         const battles_retreated_evo = document.getElementById("battles_retreated_evo");
         battles_retreated_evo.addEventListener("change", () => {
             if (battles_retreated_evo.validity.valid)
-                window.skyfc.battles_retreated_evo.value = battles_retreated_evo.value;
-            battles_retreated_evo.value = window.skyfc.battles_retreated_evo.value;
+                skyfc.battles_retreated_evo.value = battles_retreated_evo.value;
+            battles_retreated_evo.value = skyfc.battles_retreated_evo.value;
         });
         const enemies_defeated = document.getElementById("enemies_defeated");
         enemies_defeated.addEventListener("change", () => {
             if (enemies_defeated.validity.valid)
-                window.skyfc.enemies_defeated.value = enemies_defeated.value;
-            enemies_defeated.value = window.skyfc.enemies_defeated.value;
+                skyfc.enemies_defeated.value = enemies_defeated.value;
+            enemies_defeated.value = skyfc.enemies_defeated.value;
         });
         const sbreaks = document.getElementById("sbreaks");
         sbreaks.addEventListener("change", () => {
             if (sbreaks.validity.valid)
-                window.skyfc.sbreaks.value = sbreaks.value;
-            sbreaks.value = window.skyfc.sbreaks.value;
+                skyfc.sbreaks.value = sbreaks.value;
+            sbreaks.value = skyfc.sbreaks.value;
         });
         const preemptive_attacks = document.getElementById("preemptive_attacks");
         preemptive_attacks.addEventListener("change", () => {
             if (preemptive_attacks.validity.valid)
-                window.skyfc.preemptive_attacks.value = preemptive_attacks.value;
-            preemptive_attacks.value = window.skyfc.preemptive_attacks.value;
+                skyfc.preemptive_attacks.value = preemptive_attacks.value;
+            preemptive_attacks.value = skyfc.preemptive_attacks.value;
         });
         const surprise_attacks = document.getElementById("surprise_attacks");
         surprise_attacks.addEventListener("change", () => {
             if (surprise_attacks.validity.valid)
-                window.skyfc.surprise_attacks.value = surprise_attacks.value;
-            surprise_attacks.value = window.skyfc.surprise_attacks.value;
+                skyfc.surprise_attacks.value = surprise_attacks.value;
+            surprise_attacks.value = skyfc.surprise_attacks.value;
         });
         const retries = document.getElementById("retries");
         retries.addEventListener("change", () => {
             if (retries.validity.valid)
-                window.skyfc.retries.value = retries.value;
-            retries.value = window.skyfc.retries.value;
+                skyfc.retries.value = retries.value;
+            retries.value = skyfc.retries.value;
         });
     }
 }

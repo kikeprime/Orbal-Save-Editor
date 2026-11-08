@@ -9,7 +9,7 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skysc.battles_fought.value}
+            value=${skysc.battles_fought.value}
         >
     </div>`;
     const battles_won = `
@@ -21,7 +21,7 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skysc.battles_won.value}
+            value=${skysc.battles_won.value}
         >
     </div>`;
     const battles_lost = `
@@ -33,7 +33,7 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skysc.battles_lost.value}
+            value=${skysc.battles_lost.value}
         >
     </div>`;
     const battles_retreated = `
@@ -45,10 +45,10 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skysc.battles_retreated.value}
+            value=${skysc.battles_retreated.value}
         >
     </div>`;
-    const battles_retreated_evo = !window.skysc.evo ? "" : `
+    const battles_retreated_evo = !skysc.evo ? "" : `
     <div>
         <h3>Battles Retreated From (Evo):</h3>
         <input
@@ -57,10 +57,10 @@ export function create_bestiary() {
             min=0
             max=${0xFFFF}
             step=1
-            value=${window.skysc.battles_retreated_evo.value}
+            value=${skysc.battles_retreated_evo.value}
         >
     </div>`;
-    const enemies_defeated = !window.skysc.evo ? "" : `
+    const enemies_defeated = !skysc.evo ? "" : `
     <div>
         <h3>Enemies Defeated:</h3>
         <input
@@ -69,10 +69,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.enemies_defeated.value}
+            value=${skysc.enemies_defeated.value}
         >
     </div>`;
-    const sbreaks = !window.skysc.evo ? "" : `
+    const sbreaks = !skysc.evo ? "" : `
     <div>
         <h3>S-Breaks Triggered:</h3>
         <input
@@ -81,10 +81,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.sbreaks.value}
+            value=${skysc.sbreaks.value}
         >
     </div>`;
-    const preemptive_attacks = !window.skysc.evo ? "" : `
+    const preemptive_attacks = !skysc.evo ? "" : `
     <div>
         <h3>Pre-emptive Attacks:</h3>
         <input
@@ -93,10 +93,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.preemptive_attacks.value}
+            value=${skysc.preemptive_attacks.value}
         >
     </div>`;
-    const surprise_attacks = !window.skysc.evo ? "" : `
+    const surprise_attacks = !skysc.evo ? "" : `
     <div>
         <h3>Surprise Attacks:</h3>
         <input
@@ -105,7 +105,7 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.surprise_attacks.value}
+            value=${skysc.surprise_attacks.value}
         >
     </div>`;
     const retries = `
@@ -117,10 +117,10 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.retries.value}
+            value=${skysc.retries.value}
         >
     </div>`;
-    const retries_evo = !window.skysc.evo ? "" : `
+    const retries_evo = !skysc.evo ? "" : `
     <div>
         <h3>Number of Retries (Evo):</h3>
         <input
@@ -129,7 +129,7 @@ export function create_bestiary() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.retries_evo.value}
+            value=${skysc.retries_evo.value}
         >
     </div>`;
     skyscdiv.innerHTML = `
@@ -153,69 +153,69 @@ function bestiary_callbacks() {
     const battles_fought = document.getElementById("battles_fought");
     battles_fought.addEventListener("change", () => {
         if (battles_fought.validity.valid)
-            window.skysc.battles_fought.value = battles_fought.value;
-        battles_fought.value = window.skysc.battles_fought.value;
+            skysc.battles_fought.value = battles_fought.value;
+        battles_fought.value = skysc.battles_fought.value;
     });
     const battles_won = document.getElementById("battles_won");
     battles_fought.addEventListener("change", () => {
         if (battles_won.validity.valid)
-            window.skysc.battles_won.value = battles_won.value;
-        battles_won.value = window.skysc.battles_won.value;
+            skysc.battles_won.value = battles_won.value;
+        battles_won.value = skysc.battles_won.value;
     });
     const battles_lost = document.getElementById("battles_lost");
     battles_lost.addEventListener("change", () => {
         if (battles_lost.validity.valid)
-            window.skysc.battles_lost.value = battles_lost.value;
-        battles_lost.value = window.skysc.battles_lost.value;
+            skysc.battles_lost.value = battles_lost.value;
+        battles_lost.value = skysc.battles_lost.value;
     });
     const battles_retreated = document.getElementById("battles_retreated");
     battles_retreated.addEventListener("change", () => {
         if (battles_retreated.validity.valid)
-            window.skysc.battles_retreated.value = battles_retreated.value;
-        battles_retreated.value = window.skysc.battles_retreated.value;
+            skysc.battles_retreated.value = battles_retreated.value;
+        battles_retreated.value = skysc.battles_retreated.value;
     });
     const retries = document.getElementById("retries");
     retries.addEventListener("change", () => {
         if (retries.validity.valid)
-            window.skysc.retries.value = retries.value;
-        retries.value = window.skysc.retries.value;
+            skysc.retries.value = retries.value;
+        retries.value = skysc.retries.value;
     });
-    if (window.skysc.evo) {
+    if (skysc.evo) {
         const battles_retreated_evo = document.getElementById("battles_retreated_evo");
         battles_retreated_evo.addEventListener("change", () => {
             if (battles_retreated_evo.validity.valid)
-                window.skysc.battles_retreated_evo.value = battles_retreated_evo.value;
-            battles_retreated_evo.value = window.skysc.battles_retreated_evo.value;
+                skysc.battles_retreated_evo.value = battles_retreated_evo.value;
+            battles_retreated_evo.value = skysc.battles_retreated_evo.value;
         });
         const enemies_defeated = document.getElementById("enemies_defeated");
         enemies_defeated.addEventListener("change", () => {
             if (enemies_defeated.validity.valid)
-                window.skysc.enemies_defeated.value = enemies_defeated.value;
-            enemies_defeated.value = window.skysc.enemies_defeated.value;
+                skysc.enemies_defeated.value = enemies_defeated.value;
+            enemies_defeated.value = skysc.enemies_defeated.value;
         });
         const sbreaks = document.getElementById("sbreaks");
         sbreaks.addEventListener("change", () => {
             if (sbreaks.validity.valid)
-                window.skysc.sbreaks.value = sbreaks.value;
-            sbreaks.value = window.skysc.sbreaks.value;
+                skysc.sbreaks.value = sbreaks.value;
+            sbreaks.value = skysc.sbreaks.value;
         });
         const preemptive_attacks = document.getElementById("preemptive_attacks");
         preemptive_attacks.addEventListener("change", () => {
             if (preemptive_attacks.validity.valid)
-                window.skysc.preemptive_attacks.value = preemptive_attacks.value;
-            preemptive_attacks.value = window.skysc.preemptive_attacks.value;
+                skysc.preemptive_attacks.value = preemptive_attacks.value;
+            preemptive_attacks.value = skysc.preemptive_attacks.value;
         });
         const surprise_attacks = document.getElementById("surprise_attacks");
         surprise_attacks.addEventListener("change", () => {
             if (surprise_attacks.validity.valid)
-                window.skysc.surprise_attacks.value = surprise_attacks.value;
-            surprise_attacks.value = window.skysc.surprise_attacks.value;
+                skysc.surprise_attacks.value = surprise_attacks.value;
+            surprise_attacks.value = skysc.surprise_attacks.value;
         });
         const retries_evo = document.getElementById("retries_evo");
         retries_evo.addEventListener("change", () => {
             if (retries_evo.validity.valid)
-                window.skysc.retries_evo.value = retries_evo.value;
-            retries_evo.value = window.skysc.retries_evo.value;
+                skysc.retries_evo.value = retries_evo.value;
+            retries_evo.value = skysc.retries_evo.value;
         });
     }
 }

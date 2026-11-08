@@ -1,10 +1,10 @@
 export function create_inventory() {
     const skyscdiv = document.getElementById("skyscdiv");
-    const inventory_options = Object.entries(window.skysc.inventory_dict)
+    const inventory_options = Object.entries(skysc.inventory_dict)
         .map(([label, value]) => `\n\t<option value=${value}>${label}</option>`)
         .join("");
     let inventory = "";
-    for (let i = 0; i < window.skysc.inventory.length; i++) {
+    for (let i = 0; i < skysc.inventory.length; i++) {
         inventory += `
         <div>
             <h3>Slot ${i+1}:</h3>
@@ -13,7 +13,7 @@ export function create_inventory() {
                 <input
                     type="number"
                     name=${i}
-                    value=${window.skysc.inventory[i] >>> 16}
+                    value=${skysc.inventory[i] >>> 16}
                     min=0
                     max=99
                     step=1
@@ -21,14 +21,14 @@ export function create_inventory() {
             </div>
         </div>`;
     }
-    const sepith = window.skysc.element_list
+    const sepith = skysc.element_list
         .map((label, i) => `
         <label style="display: flex; align-items: center; gap: 10px">
             ${label}:
             <input
                 type="number"
                 name=${i}
-                value=${window.skysc.sepith[i]}
+                value=${skysc.sepith[i]}
                 min=0
                 max=999999
                 step=1
@@ -51,7 +51,7 @@ export function create_inventory() {
 function inventory_callbacks() {
     const inventory = document.getElementById("inventory");
     inventory.querySelectorAll("select").forEach(select => {
-        select.value = window.skysc.inventory[select.name] & 0xFFFF;
+        select.value = skysc.inventory[select.name] & 0xFFFF;
     });
     Array.from(inventory.children).forEach(slot => {
         const select = slot.querySelector("select");
@@ -59,18 +59,18 @@ function inventory_callbacks() {
         slot.addEventListener("change", () => {
             // I have no idea why addition doesn't work instead of or.
             if (input.validity.valid)
-                window.skysc.inventory[select.name] = (input.value << 16) | select.value;
+                skysc.inventory[select.name] = (input.value << 16) | select.value;
             else {
-                const quantity = window.skysc.inventory[select.name] >>> 16;
-                window.skysc.inventory[select.name] = (quantity << 16) | select.value;
+                const quantity = skysc.inventory[select.name] >>> 16;
+                skysc.inventory[select.name] = (quantity << 16) | select.value;
             }
-            input.value = window.skysc.inventory[select.name] >>> 16;
+            input.value = skysc.inventory[select.name] >>> 16;
         });
     });
     const sepith = document.getElementById("sepith");
     sepith.addEventListener("change", (e) => {
         if (e.target.validity.valid)
-            window.skysc.sepith[e.target.name] = e.target.value;
-        e.target.value = window.skysc.sepith[e.target.name];
+            skysc.sepith[e.target.name] = e.target.value;
+        e.target.value = skysc.sepith[e.target.name];
     });
 }

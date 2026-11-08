@@ -1,21 +1,20 @@
 export function create_log() {
     const skyscdiv = document.getElementById("skyscdiv");
     let pages = "";
-    for (let i = 1; i <= 18; i++) {
+    for (let i = 1; i <= 19; i++) {
         pages += `<option value=${i}>Page ${i}</option>`;
     }
     skyscdiv.innerHTML = `
     <div style="-webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
         <select id="log_tabs">
             ${pages}
-            <option value=19>Hidden</option>
         </select>
         <div id="message_log"></div>
     </div>`;
     const log_tabs = document.getElementById("log_tabs");
     function tab_sel() {
         const message_log = document.getElementById("message_log");
-        message_log.innerHTML = window.skysc.message_log
+        message_log.innerHTML = skysc.message_log
             .filter((entry, i) => (log_tabs.value - 1) * 111 <= i && i < log_tabs.value * 111)
             .map((entry, i) => create_entry((log_tabs.value - 1) * 111 + i))
             .join("");
@@ -26,7 +25,7 @@ export function create_log() {
 }
 
 function create_entry(idx) {
-    const entry = window.skysc.message_log[idx];
+    const entry = skysc.message_log[idx];
     return `
     <div>
         <h2>Entry: ${idx+1}</h2>
@@ -71,14 +70,14 @@ function log_callbacks() {
         if (e.target.type == "number") {
             const name = e.target.name.slice(0, 3);
             const idx = e.target.name.slice(4);
-            const entry = window.skysc.message_log[idx];
+            const entry = skysc.message_log[idx];
             if (e.target.validity.valid)
                 entry[name].value = e.target.value;
             e.target.value = entry[name].value;
         }
         else {
-            window.skysc.message_log[e.target.name].speaker = e.target.value;
-            e.target.value = window.skysc.message_log[e.target.name].speaker;
+            skysc.message_log[e.target.name].speaker = e.target.value;
+            e.target.value = skysc.message_log[e.target.name].speaker;
         }
     });
 }

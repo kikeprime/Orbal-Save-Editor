@@ -1,6 +1,6 @@
 export function create_recipe_book() {
     const skyfcdiv = document.getElementById("skyfcdiv");
-    const sitdown_meals = `
+    const sitdown_meals = !skyfc.evo ? "" : `
     <div>
         <h3>Sit-Down Meals Made:</h3>
         <input
@@ -9,10 +9,10 @@ export function create_recipe_book() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.sitdown_meals.value}
+            value=${skyfc.sitdown_meals.value}
         >
     </div>`;
-    const togo_meals = `
+    const togo_meals = !skyfc.evo ? "" : `
     <div>
         <h3>To-Go Meals Made:</h3>
         <input
@@ -21,7 +21,7 @@ export function create_recipe_book() {
             min=0
             max=999999
             step=1
-            value=${window.skyfc.togo_meals.value}
+            value=${skyfc.togo_meals.value}
         >
     </div>`;
     skyfcdiv.innerHTML = `
@@ -33,16 +33,18 @@ export function create_recipe_book() {
 }
 
 function recipe_book_callbacks() {
-    const sitdown_meals = document.getElementById("sitdown_meals");
-    sitdown_meals.addEventListener("change", () => {
-        if (sitdown_meals.validity.valid)
-            window.skyfc.sitdown_meals.value = sitdown_meals.value;
-        sitdown_meals.value = window.skyfc.sitdown_meals.value;
-    });
-    const togo_meals = document.getElementById("togo_meals");
-    togo_meals.addEventListener("change", () => {
-        if (togo_meals.validity.valid)
-            window.skyfc.togo_meals.value = togo_meals.value;
-        togo_meals.value = window.skyfc.togo_meals.value;
-    });
+    if (skyfc.evo) {
+        const sitdown_meals = document.getElementById("sitdown_meals");
+        sitdown_meals.addEventListener("change", () => {
+            if (sitdown_meals.validity.valid)
+                skyfc.sitdown_meals.value = sitdown_meals.value;
+            sitdown_meals.value = skyfc.sitdown_meals.value;
+        });
+        const togo_meals = document.getElementById("togo_meals");
+        togo_meals.addEventListener("change", () => {
+            if (togo_meals.validity.valid)
+                skyfc.togo_meals.value = togo_meals.value;
+            togo_meals.value = skyfc.togo_meals.value;
+        });
+    }
 }

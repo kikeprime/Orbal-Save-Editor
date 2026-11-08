@@ -9,7 +9,7 @@ export function create_notebook() {
             min=0
             max=368
             step=1
-            value=${window.skyfc.bp.value}
+            value=${skyfc.bp.value}
         >
     </div>`;
     skyfcdiv.innerHTML = `
@@ -23,7 +23,7 @@ function notebook_callbacks() {
     const bp = document.getElementById("bp");
     bp.addEventListener("change", () => {
         if (bp.validity.valid)
-            window.skyfc.bp.value = bp.value;
-        bp.value = window.skyfc.bp.value;
+            skyfc.bp.value = bp.value;
+        bp.value = skyfc.bp.value;
     });
 }

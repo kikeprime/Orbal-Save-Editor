@@ -9,7 +9,7 @@ export function create_general() {
         <option value=1>Hard</option>
         <option value=2>Nightmare</option>
     </select>`;
-    const party_options = Object.entries(window.skysc.character_dict)
+    const party_options = Object.entries(skysc.character_dict)
         .map(([label, value]) => `\n\t<option value=${value}>${label}</option>`)
         .join("");
     const party = `
@@ -55,7 +55,7 @@ export function create_general() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.mira.value}
+            value=${skysc.mira.value}
         >
     </div>`;
     const medals = `
@@ -67,7 +67,7 @@ export function create_general() {
             min=0
             max=999999
             step=1
-            value=${window.skysc.medals.value}
+            value=${skysc.medals.value}
         >
     </div>`;
     skyscdiv.innerHTML = `
@@ -82,7 +82,7 @@ export function create_general() {
 }
 
 function create_playtime() {
-    const playtime = window.skysc.get_playtime();
+    const playtime = skysc.get_playtime();
     return `
     <h3>Playtime:</h3>
     <div id="playtime" style="display: flex; gap: 20px">
@@ -124,14 +124,14 @@ function playtime_callbacks() {
             minutes.validity.valid &&
             seconds.validity.valid
         ) {
-            window.skysc.set_playtime(
+            skysc.set_playtime(
                 Number(hours.value),
                 Number(minutes.value),
                 Number(seconds.value),
                 0,
             );
         }
-        const [h, m, s, f, cs] = window.skysc.get_playtime();
+        const [h, m, s, f, cs] = skysc.get_playtime();
         hours.value = h;
         minutes.value = m;
         seconds.value = s;
@@ -144,27 +144,27 @@ function playtime_callbacks() {
 function general_callbacks() {
     playtime_callbacks();
     const difficulty = document.getElementById("difficulty");
-    difficulty.value = window.skysc.difficulty.value;
+    difficulty.value = skysc.difficulty.value;
     difficulty.addEventListener("change", () => {
-        window.skysc.difficulty.value = difficulty.value;
+        skysc.difficulty.value = difficulty.value;
     });
     const party = document.getElementById("party");
     Array.from(party.querySelectorAll("select")).forEach(select => {
-        select.value = window.skysc.party[select.name];
+        select.value = skysc.party[select.name];
         select.addEventListener("change", () => {
-            window.skysc.party[select.name] = select.value;
+            skysc.party[select.name] = select.value;
         });
     });
     const mira = document.getElementById("mira");
     mira.addEventListener("change", () => {
         if (mira.validity.valid)
-            window.skysc.mira.value = mira.value;
-        mira.value = window.skysc.mira.value;
+            skysc.mira.value = mira.value;
+        mira.value = skysc.mira.value;
     });
     const medals = document.getElementById("medals");
     medals.addEventListener("change", () => {
         if (medals.validity.valid)
-            window.skysc.medals.value = medals.value;
-        medals.value = window.skysc.medals.value;
+            skysc.medals.value = medals.value;
+        medals.value = skysc.medals.value;
     });
 }

@@ -1,6 +1,6 @@
 export function create_characters() {
     const skyfcdiv = document.getElementById("skyfcdiv");
-    const char_options = window.skyfc.characters
+    const char_options = skyfc.characters
         .map((c, idx) => `\n\t<option value=${idx}>${c.name}</option>`)
         .join("");
     skyfcdiv.innerHTML = `
@@ -56,7 +56,7 @@ function create_character(id, tab) {
 
 function create_stats(id) {
     const skyfcchardiv = document.getElementById("skyfcchardiv");
-    const c = window.skyfc.characters[id];
+    const c = skyfc.characters[id];
     const level = `
     <div>
         <h3>Level:</h3>
@@ -299,7 +299,7 @@ function create_stats(id) {
 }
 
 function stats_callbacks(id) {
-    const c = window.skyfc.characters[id];
+    const c = skyfc.characters[id];
     const level = document.getElementById("level");
     level.addEventListener("change", () => {
         if (level.validity.valid)
@@ -394,18 +394,18 @@ function stats_callbacks(id) {
 
 function create_equipment(id) {
     const skyfcchardiv = document.getElementById("skyfcchardiv");
-    const c = window.skyfc.characters[id];
-    const weapon_options = window.skyfc.weapon_list[c.name]
-        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+    const c = skyfc.characters[id];
+    const weapon_options = skyfc.weapon_list[c.name]
+        .map((label) => `\n\t<option value=${skyfc.inventory_dict[label]}>${label}</option>`)
         .join("");
-    const armor_options = window.skyfc.armor_list
-        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+    const armor_options = skyfc.armor_list
+        .map((label) => `\n\t<option value=${skyfc.inventory_dict[label]}>${label}</option>`)
         .join("");
-    const boots_options = window.skyfc.boots_list
-        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+    const boots_options = skyfc.boots_list
+        .map((label) => `\n\t<option value=${skyfc.inventory_dict[label]}>${label}</option>`)
         .join("");
-    const accessory_options = window.skyfc.accessory_list
-        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+    const accessory_options = skyfc.accessory_list
+        .map((label) => `\n\t<option value=${skyfc.inventory_dict[label]}>${label}</option>`)
         .join("");
     const weapon = `
     <div>
@@ -454,7 +454,7 @@ function create_equipment(id) {
 }
 
 function equipment_callbacks(id) {
-    const c = window.skyfc.characters[id];
+    const c = skyfc.characters[id];
     const weapon = document.getElementById("weapon");
     weapon.value = c.weapon.value;
     weapon.addEventListener("change", () => {
@@ -484,9 +484,9 @@ function equipment_callbacks(id) {
 
 function create_orbment(id) {
     const skyfcchardiv = document.getElementById("skyfcchardiv");
-    const c = window.skyfc.characters[id];
-    const quartz_options = window.skyfc.quartz_list
-        .map((label) => `\n\t<option value=${window.skyfc.inventory_dict[label]}>${label}</option>`)
+    const c = skyfc.characters[id];
+    const quartz_options = skyfc.quartz_list
+        .map((label) => `\n\t<option value=${skyfc.inventory_dict[label]}>${label}</option>`)
         .join("");
     let orbment = "";
     for (let i = 0; i < 6; i++) {
@@ -499,7 +499,7 @@ function create_orbment(id) {
             <input class="skyfc-orbment" type="checkbox" value=${i} ${checked}>
         </div>`
     }
-    const art_options = Object.entries(window.skyfc.art_dict)
+    const art_options = Object.entries(skyfc.art_dict)
         .map(([label, value]) => `\n\t<option value=${value}>${label}</option>`)
         .join("");
     let arts = "";
@@ -528,7 +528,7 @@ function create_orbment(id) {
 }
 
 function orbment_callbacks(id) {
-    const c = window.skyfc.characters[id];
+    const c = skyfc.characters[id];
     const orbment = document.getElementById("orbment");
     orbment.querySelectorAll("select").forEach(select => {
         select.value = c.orbment[select.name] & ~(1 << 16);
@@ -566,9 +566,9 @@ function orbment_callbacks(id) {
 
 function create_crafts(id) {
     const skyfcchardiv = document.getElementById("skyfcchardiv");
-    const c = window.skyfc.characters[id];
-    const craft_options = window.skyfc.craft_list
-        .map(label => `<option value=${window.skyfc.craft_dict[label]}>${label}</option>`)
+    const c = skyfc.characters[id];
+    const craft_options = skyfc.craft_list
+        .map(label => `<option value=${skyfc.craft_dict[label]}>${label}</option>`)
         .join("");
     let crafts = "";
     for (let i = 0; i < c.crafts.length; i++) {
@@ -611,7 +611,7 @@ function create_crafts(id) {
 }
 
 function crafts_callbacks(id) {
-    const c = window.skyfc.characters[id];
+    const c = skyfc.characters[id];
     const crafts = document.getElementById("crafts");
     crafts.querySelectorAll("select").forEach(select => {
         select.value = c.crafts[select.name].craft.value;

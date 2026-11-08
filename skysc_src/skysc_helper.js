@@ -117,3 +117,15 @@ export class SkySCMessageLog {
 )`;
     }
 }
+
+export class SkySCFish {
+    // 0x7E bytes long struct.
+    constructor(name, offset, data) {
+        this.offset = offset;
+        this.data = data;
+        this.record_size = new dt.U16(offset+0x00, data);
+        this.spots = dt.Array(dt.U8, 16, offset+0x02, data);
+        this.counts = dt.Array(dt.U16, 48, offset+0x12, data);
+        this.baits = dt.Array(dt.U8, 5, offset+0x76, data);
+    }
+}
