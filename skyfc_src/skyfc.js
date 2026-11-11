@@ -56,6 +56,8 @@ export default class SkyFC {
         this.battles_won = new dt.U16(0x11F08, this.data);
         this.battles_retreated = new dt.U16(0x11F0C, this.data);
         
+        this.recipes = dt.Array(dt.U8, 9, 0x12C37, this.data);
+        
         this.difficulty = new dt.U8(0x16DE6, this.data);
         
         // Evolution stuff

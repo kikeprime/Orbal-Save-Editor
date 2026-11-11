@@ -71,6 +71,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
             - Battles Retreated From (a 2nd field)
             - Number of Retries
 - Recipe Book:
+    - Recipes learned
     - Evo exclusive stats:
         - Sit-Down Meals Made
         - To-Go Meals Made
@@ -139,6 +140,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
             - Battles Retreated From (a 2nd field)
             - Number of Retries (a 2nd field)
 - Recipe Book:
+    - Recipes learned
     - Evo exclusive stats:
         - Sit-Down Meals Made
         - To-Go Meals Made

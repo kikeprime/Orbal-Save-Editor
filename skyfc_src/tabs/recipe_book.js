@@ -24,10 +24,24 @@ export function create_recipe_book() {
             value=${skyfc.togo_meals.value}
         >
     </div>`;
+    const recipes = Object.entries(skyfc.recipe_dict)
+        .map(([label, value]) => `
+        <label style="display: flex; align-items: center; gap: 20px">
+            ${label}
+            <input
+                type="checkbox"
+                value=${value}
+                ${skyfc.recipes[Math.floor(value / 16)] & (1 << value % 16) ? "checked" : ""}
+            >
+        </label>`)
+        .join("");
     skyfcdiv.innerHTML = `
     <div>
         ${sitdown_meals}
         ${togo_meals}
+        <div id="recipes">
+            ${recipes}
+        </div>
     </div>`;
     recipe_book_callbacks();
 }
@@ -47,4 +61,13 @@ function recipe_book_callbacks() {
             togo_meals.value = skyfc.togo_meals.value;
         });
     }
+    const recipes = document.getElementById("recipes");
+    recipes.addEventListener("change", (e) => {
+        const idx = Math.floor(e.target.value / 16);
+        const bit = e.target.value % 16;
+        if (e.target.checked)
+            skyfc.recipes[idx] |= (1 << bit);
+        else
+            skyfc.recipes[idx] &= ~(1 << bit);
+    });
 }

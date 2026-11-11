@@ -62,6 +62,8 @@ export default class SkySC {
         this.sepith = dt.Array(dt.U32, 7, 0x1AE04, this.data);
         this.playtime = new dt.U32(0x1AE40, this.data);
         
+        this.recipes = dt.Array(dt.U8, 10, 0x1C1B7, this.data);
+        
         this.difficulty = new dt.U8(0x2037D, this.data);
         
         this.battles_fought = new dt.U16(0x2058C, this.data);
