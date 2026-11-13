@@ -44,7 +44,16 @@ export default class SkyFC {
         ];
         // RA Code Notes documents 230 slots though for me until the next non-zero data it has 1024 slots of space.
         this.inventory = dt.Array(dt.U32, 230, 0x0F10, this.data);
-        
+        this.quests = [];
+        Object.entries(this.quest_dict).forEach(([quest, idx]) => {
+            this.quests.push({
+                "name": quest,
+                "state": new dt.U16(0x1F1E+idx*0x0C+0x00, this.data),
+                "bonus_bp": new dt.S16(0x1F1E+idx*0x0C+0x02, this.data),
+                "mira": new dt.S16(0x1F1E+idx*0x0C+0x04, this.data),
+                "progress": new dt.U16(0x1F1E+idx*0x0C+0x06, this.data),
+            });
+        });
         this.party = dt.Array(dt.U32, 8, 0x11C78, this.data);
         this.mira = new dt.U32(0x11CA0, this.data);
         this.bp = new dt.U32(0x11CA4, this.data);
@@ -57,7 +66,7 @@ export default class SkyFC {
         this.battles_retreated = new dt.U16(0x11F0C, this.data);
         
         this.recipes = dt.Array(dt.U8, 9, 0x12C37, this.data);
-        
+        this.bestiary = []; // 0x12DE9
         this.difficulty = new dt.U8(0x16DE6, this.data);
         
         // Evolution stuff

@@ -25,7 +25,7 @@ export function create_characters() {
     }
     skyfcchartabs.addEventListener("change", tab_sel);
     skyfccharsubtabs.addEventListener("change", tab_sel);
-    create_character(skyfcchartabs.value, skyfccharsubtabs.value);
+    tab_sel();
 }
 
 function create_character(id, tab) {

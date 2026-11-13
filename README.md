@@ -57,6 +57,12 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
     - Sepith
 - Bracer Notebook:
     - Bracer Points (BP)
+    - Quests:
+        - State (Viewed, Accepted, Reported, Expired)
+        - Displayed Bonus BP (Evo doesn't display it but PSP does)
+        - Displayed Mira Modifier
+        - Progress Flags (some of these are the Bonus BP flags)
+        - I eventually want to label all progress flags but that's a low priority. I ask for your understanding that this is a huge task.
 - Monster Guide:
     - Combat Notebook:
         - Battles Fought
@@ -76,7 +82,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
         - Sit-Down Meals Made
         - To-Go Meals Made
 - Evolution Message Log:
-    - 1024 entries but ingame only the first 999 are displayed.
+    - 1024 entries but ingame only 999 of them are displayed.
     - Name of the speaker
     - 2 Message IDs
 
@@ -149,7 +155,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
     - Spots the fish was caught recently. Ingame only 5 out of 16 slots are displayed.
     - Fish caught counters for each spot.
 - Evolution Message Log:
-    - 2048 entries but ingame 2000 are displayed.
+    - 2048 entries but ingame only 2000 of them are displayed.
     - Name of the speaker
     - 2 Message IDs
 
