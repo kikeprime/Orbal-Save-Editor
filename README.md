@@ -60,7 +60,7 @@ Unlike my Kingdom Hearts Save Editor project here I started to discover every si
     - Quests:
         - State (Viewed, Accepted, Reported, Expired)
         - Displayed Bonus BP (Evo doesn't display it but PSP does)
-        - Displayed Mira Modifier
+        - Displayed Bonus Mira (modifies the displayed mira value)
         - Progress Flags (some of these are the Bonus BP flags)
         - I eventually want to label all progress flags but that's a low priority. I ask for your understanding that this is a huge task.
 - Monster Guide:
@@ -175,3 +175,4 @@ For now, `skyfc_src/skyfc.js` and `skysc_src/skysc.js` double as save file docum
 - dedede123 & fungualtissue1230 for the PowerShell script to decrypt and encrypt the KH3 PC save files
 - The OpenKH community for various helps including modding the KH games
 - The RetroAchievements community for the Code Notes and the fun sets and not just the KH ones
+- The [Kiseki Wiki](https://kiseki.fandom.com) for both being helpful with my runs and so I don't have type the quest progress flag labels myself.

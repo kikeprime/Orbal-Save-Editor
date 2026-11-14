@@ -50,7 +50,7 @@ export default class SkyFC {
                 "name": quest,
                 "state": new dt.U16(0x1F1E+idx*0x0C+0x00, this.data),
                 "bonus_bp": new dt.S16(0x1F1E+idx*0x0C+0x02, this.data),
-                "mira": new dt.S16(0x1F1E+idx*0x0C+0x04, this.data),
+                "bonus_mira": new dt.S16(0x1F1E+idx*0x0C+0x04, this.data),
                 "progress": new dt.U16(0x1F1E+idx*0x0C+0x06, this.data),
             });
         });

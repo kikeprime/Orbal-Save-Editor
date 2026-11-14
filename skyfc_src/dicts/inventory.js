@@ -126,6 +126,7 @@ export function inventory_dicts(obj) {
         "Red Scarf": 0x0149,
         "Woolly Knit-Hat": 0x014A,
         "Work Gloves": 0x014D,
+        "Long Barrel": 0x014F,
         "Cool Necklace": 0x0150,
     };
     obj.food_dict = {
@@ -698,6 +699,7 @@ export function inventory_dicts(obj) {
         "Red Scarf",
         "Woolly Knit-Hat",
         "Work Gloves",
+        "Long Barrel",
         "Cool Necklace",
     ];
     obj.quartz_list = [

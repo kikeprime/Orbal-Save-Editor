@@ -133,11 +133,11 @@ function create_quests(region) {
             max=${0x7FFF}
             step=1
         >`;
-        const mira = `
+        const bonus_mira = `
         <input
             type="number"
-            name="mira"
-            value=${quest.mira.value}
+            name="bonus_mira"
+            value=${quest.bonus_mira.value}
             min=${-0x8000}
             max=${0x7FFF}
             step=1
@@ -159,17 +159,17 @@ function create_quests(region) {
         }
         progress += "</div>";
         return `
-        <div id="${name}">
-            <h3>${name}:</h3>
+        <details id="${name}">
+            <summary><h3>${name}:</h3></summary>
             <h4>State:</h4>
             ${state}
             <h4>Bonus BP:</h4>
             ${bonus_bp}
-            <h4>Mira Modifier:</h4>
-            ${mira}
+            <h4>Bonus Mira:</h4>
+            ${bonus_mira}
             <h4>Progress:</h4>
             ${progress}
-        </div>`;
+        </details>`;
     }
     skyfcbndiv.innerHTML = skyfc.notebook_dict[region]
         .map(name => create_quest(name))
@@ -196,11 +196,11 @@ function quest_callbacks(region) {
                 input.value = quest.bonus_bp.value;
             });
         });
-        questdiv.querySelectorAll("input[name=mira]").forEach(input => {
+        questdiv.querySelectorAll("input[name=bonus_mira]").forEach(input => {
             input.addEventListener("change", () => {
                 if (input.validity.valid)
-                    quest.mira.value = input.value;
-                input.value = quest.mira.value;
+                    quest.bonus_mira.value = input.value;
+                input.value = quest.bonus_mira.value;
             });
         });
         questdiv.querySelectorAll("input[name=progress]").forEach(input => {
