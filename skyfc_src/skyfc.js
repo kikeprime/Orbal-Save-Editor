@@ -52,6 +52,8 @@ export default class SkyFC {
                 "bonus_bp": new dt.S16(0x1F1E+idx*0x0C+0x02, this.data),
                 "bonus_mira": new dt.S16(0x1F1E+idx*0x0C+0x04, this.data),
                 "progress": new dt.U16(0x1F1E+idx*0x0C+0x06, this.data),
+                "unk08": new dt.U16(0x1F1E+idx*0x0C+0x08, this.data),
+                "unk0A": new dt.U16(0x1F1E+idx*0x0C+0x0A, this.data),
             });
         });
         this.party = dt.Array(dt.U32, 8, 0x11C78, this.data);
