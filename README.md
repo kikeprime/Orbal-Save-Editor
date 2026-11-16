@@ -7,6 +7,8 @@ List of supported games:
 
 An online save editor for the Trails series also known as Kiseki series in the wider The Legend of Heroes / Eiyuu Densetsu series.
 
+Hosted via GitHub Pages at: https://kikeprime.github.io/Orbal-Save-Editor
+
 Currently focusing on the Trails in the Sky / Sora no Kiseki Trilogy because I just got into the series.
 
 I'm playing Sky FC Evo but after inspecting PC and PSP Sky FC save files it turned out PC is radically different from PSP/Evo and Evo is just an extension of the PSP save file meaning I can support both.
